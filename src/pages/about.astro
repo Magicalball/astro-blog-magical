@@ -1,4 +1,6 @@
 ---
+import Footer from '../components/Footer.astro'
+import Navigation from '../components/Navigation.astro'
 import '../styles/global.css'
 
 const pageTitle = '关于我'
@@ -33,9 +35,7 @@ const skillColor = 'navy'
     </style>
   </head>
   <body>
-    <a href="/">首页</a>
-    <a href="/about/">关于</a>
-    <a href="/blog/">博客</a>
+    <Navigation />
     <h1>{pageTitle}</h1>
     <p>Name(CN): {identity.CNname}</p>
     <p>Name(EN): {identity.Enname}</p>
@@ -49,5 +49,6 @@ const skillColor = 'navy'
     <ul>
       {skills.map((skill) => <li class="skill">{skill}</li>)}
     </ul>
+    <Footer />
   </body>
 </html>
