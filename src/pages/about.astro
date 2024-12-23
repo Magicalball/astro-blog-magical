@@ -1,0 +1,62 @@
+---
+const pageTitle = '关于我'
+const identity = {
+  bobbies: ['羽毛球', '动画', '音游'],
+  CNname: '云易轩',
+  Enname: 'Magical_ball',
+  country: 'China',
+  vocational: '学生',
+  workemail: 'yixuanyun57@gmail.com',
+}
+const skills = ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Astro']
+
+const happy = true
+const finished = false
+const goal = 3
+
+const skillColor = 'navy'
+---
+
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <style define:vars={{ skillColor }}>
+      h1 {
+        color: rgb(39, 121, 214);
+        font-size: 4rem;
+      }
+      .skill {
+        color: var(--skillColor);
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="/">首页</a>
+    <a href="/about/">关于</a>
+    <a href="/blog/">博客</a>
+    <h1>{pageTitle}</h1>
+    <p>Name(CN): {identity.CNname}</p>
+    <p>Name(EN): {identity.Enname}</p>
+    <p>Country: {identity.country}</p>
+    <p>身份: {identity.vocational}</p>
+    <p>Email: {identity.workemail}</p>
+    <p>
+      爱好: {identity.bobbies[0]},{identity.bobbies[1]},{identity.bobbies[2]}
+    </p>
+    <p>技术栈:</p>
+    <ul>
+      {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+
+    {happy && <p>我非常乐意学习 Astro！</p>}
+
+    {finished && <p>我完成了这节教程！</p>}
+
+    {goal === 3 ? <p>我的目标是在三天内完成。</p> : <p>我的目标不是 3 天。</p>}
+  </body>
+</html>
