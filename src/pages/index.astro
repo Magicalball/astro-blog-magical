@@ -16,5 +16,11 @@ import '../styles/global.css'
     <Header />
     <h1>魔法球的站点</h1>
     <Footer />
+
+    <script>
+      document.querySelector('.hamburger')?.addEventListener('click', () => {
+        document.querySelector('.nav-links')?.classList.toggle('expanded')
+      })
+    </script>
   </body>
 </html>

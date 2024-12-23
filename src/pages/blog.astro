@@ -20,5 +20,11 @@ import '../styles/global.css'
       <li><a href="/posts/221031/">入站黑板</a></li>
     </ul>
     <Footer />
+
+    <script>
+      document.querySelector('.hamburger')?.addEventListener('click', () => {
+        document.querySelector('.nav-links')?.classList.toggle('expanded')
+      })
+    </script>
   </body>
 </html>

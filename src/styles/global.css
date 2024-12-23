@@ -3,21 +3,18 @@ html {
   font-family: sans-serif;
 }
 
-body {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 80ch;
-  padding: 1rem;
-  line-height: 1.5;
+/* 导航样式 */
+.hamburger {
+  padding-right: 20px;
+  cursor: pointer;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-h1 {
-  margin: 1rem 0;
-  font-size: 2.5rem;
+.hamburger .line {
+  display: block;
+  width: 40px;
+  height: 5px;
+  margin-bottom: 10px;
+  background-color: #405feb;
 }
 
 /* 导航样式 */
@@ -54,13 +51,40 @@ h1 {
   .nav-links {
     margin-left: 5em;
     display: block;
-    position: static;
-    width: auto;
-    background: none;
+    text-align: center;
+    padding: 10px 0;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #405feb;
   }
 
   .nav-links a {
     display: inline-block;
     padding: 15px 20px;
+  }
+
+  .expanded {
+    display: unset;
+  }
+
+  @media screen and (min-width: 636px) {
+    .nav-links {
+      margin-left: 5em;
+      display: block;
+      position: static;
+      width: auto;
+      background: none;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      padding: 15px 20px;
+    }
+
+    .hamburger {
+      display: none;
+    }
   }
 }
