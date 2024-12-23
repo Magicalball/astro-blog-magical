@@ -1,13 +1,26 @@
 ---
-const platform = 'github'
-const username = 'Magicalball'
+import Social from './Social.astro'
 ---
 
-<footer>
+<style>
+  footer {
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .foot p {
+    text-align: center;
+    color: rgb(35, 35, 35);
+    font-size: 0.8rem;
+  }
+</style>
+
+<footer class="foot">
   <p>Made by Magicalball</p>
   <p>
-    Learn more about my projects on <a
-      href={`https://www.${platform}.com/${username}`}>{platform}</a
-    >!
+    Learn more about my projects on <Social
+      platform="github"
+      username="Magicalball"
+    /> !
   </p>
 </footer>
