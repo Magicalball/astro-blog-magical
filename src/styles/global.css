@@ -21,6 +21,20 @@ html {
   }
 
   /* 导航样式 */
+.hamburger {
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.hamburger .line {
+  display: block;
+  width: 40px;
+  height: 5px;
+  margin-bottom: 10px;
+  background-color: #405feb;
+}
+
+  /* 导航样式 */
 
 .nav-links {
     width: 100%;
@@ -39,6 +53,7 @@ html {
     font-size: 1.2rem;
     font-weight: bold;
     text-transform: uppercase;
+    color: #405feb;
   }
   
   .nav-links a:hover,
@@ -62,6 +77,10 @@ html {
     .nav-links a {
       display: inline-block;
       padding: 15px 20px;
+    }
+
+    .hamburger {
+      display: none;
     }
   
   }
