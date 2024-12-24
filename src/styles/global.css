@@ -3,7 +3,24 @@ html {
   font-family: sans-serif;
 }
 
-/* 导航样式 */
+body {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 80ch;
+  padding: 1rem;
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 1rem 0;
+  font-size: 2.5rem;
+}
+
+/* 汉堡样式 */
 .hamburger {
   padding-right: 20px;
   cursor: pointer;
