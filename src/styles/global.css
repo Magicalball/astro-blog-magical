@@ -9,6 +9,7 @@ html {
     max-width: 80ch;
     padding: 1rem;
     line-height: 1.5;
+
   }
   
   * {
@@ -20,7 +21,7 @@ html {
     font-size: 2.5rem;
   }
 
-  /* 导航样式 */
+  /* 汉堡样式 */
 .hamburger {
   padding-right: 20px;
   cursor: pointer;

@@ -1,0 +1,48 @@
+---
+const { frontmatter } = Astro.props;
+---
+
+<meta charset="UTF-8">
+<div>
+<h1>{frontmatter.title}</h1>
+<p class="wrtime">发布于{frontmatter.pubDate.toString().slice(0,10) }</p>
+<p class="wrauthor">Written by {frontmatter.author}</p>
+<p><em>{frontmatter.description}</em></p>
+</div>
+
+<style>
+    * {
+        background-color: antiquewhite;
+        text-align: center  ;
+        box-sizing: border-box;
+    }
+
+    body{
+        margin: 0 auto;
+        width: 100%;
+        max-width: 80ch;
+        padding: 1rem;
+        line-height: 1.5;
+    }
+
+    h1 {
+        color: black;
+    }
+
+    p {
+        color: rgb(48, 45, 45);
+    }
+
+    .wrtime{
+        font-size: 0.9rem;
+        padding: 0 ;
+    }
+
+    .wrauthor{
+        font-size: 0.8rem;
+        padding: 0 ;
+    }
+
+</style>
+
+<slot />
