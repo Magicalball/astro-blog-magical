@@ -1,24 +1,9 @@
 ---
-import Footer from '../components/Footer.astro'
-import Header from '../components/Header.astro'
-import '../styles/global.css'
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const pageTitle = '魔法球的站点'
 ---
 
-<html lang="zh-cn">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>魔法球的站点</title>
-  </head>
-  <body>
-    <Header />
-    <h1>魔法球的站点</h1>
-    <Footer />
-
-    <script>
-      import '../scripts/menu.js'
-    </script>
-  </body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+  <h2>HEELO</h2>
+</BaseLayout>

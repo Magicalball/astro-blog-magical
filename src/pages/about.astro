@@ -1,6 +1,5 @@
 ---
-import Footer from '../components/Footer.astro'
-import Header from '../components/Header.astro'
+import BaseLayout from '../layouts/BaseLayout.astro'
 import '../styles/global.css'
 
 const pageTitle = '关于我'
@@ -16,43 +15,26 @@ const skills = ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Astro']
 const skillColor = 'navy'
 ---
 
-<html lang="zh-cn">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
-    <style define:vars={{ skillColor }}>
-      h1 {
-        color: rgb(39, 121, 214);
-        font-size: 4rem;
-      }
-      .skill {
-        color: var(--skillColor);
-        font-weight: bold;
-      }
-    </style>
-  </head>
-  <body>
-    <Header />
-    <h1>{pageTitle}</h1>
-    <p>Name(CN): {identity.CNname}</p>
-    <p>Name(EN): {identity.Enname}</p>
-    <p>Country: {identity.country}</p>
-    <p>身份: {identity.vocational}</p>
-    <p>Email: {identity.workemail}</p>
-    <p>
-      爱好: {identity.bobbies[0]},{identity.bobbies[1]},{identity.bobbies[2]}
-    </p>
-    <p>技术栈:</p>
-    <ul>
-      {skills.map((skill) => <li class="skill">{skill}</li>)}
-    </ul>
-    <Footer />
+<BaseLayout pageTitle={pageTitle}>
+  <p>Name(CN): {identity.CNname}</p>
+  <p>Name(EN): {identity.Enname}</p>
+  <p>Country: {identity.country}</p>
+  <p>身份: {identity.vocational}</p>
+  <p>Email: {identity.workemail}</p>
+  <p>爱好: {identity.bobbies[0]},{identity.bobbies[1]},{identity.bobbies[2]}</p>
+  <p>技术栈:</p>
+  <ul>
+    {skills.map((skill) => <li class="skill">{skill}</li>)}
+  </ul>
+</BaseLayout>
 
-    <script>
-      import '../scripts/menu.js'
-    </script>
-  </body>
-</html>
+<style is:global define:vars={{ skillColor }}>
+  h1 {
+    color: rgb(39, 121, 214);
+    font-size: 4rem;
+  }
+  .skill {
+    color: var(--skillColor);
+    font-weight: bold;
+  }
+</style>
