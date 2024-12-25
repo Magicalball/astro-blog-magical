@@ -4,28 +4,31 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 
 export async function getStaticPaths() {
   const allPost = await Astro.glob('../posts/*.md')
-  return [
-    { params: { tag: 'acg' }, props: { posts: allPost } },
-    { params: { tag: '学习' }, props: { posts: allPost } },
-    { params: { tag: 'Java' }, props: { posts: allPost } },
-    { params: { tag: 'JavaScript' }, props: { posts: allPost } },
-    { params: { tag: '随笔' }, props: { posts: allPost } },
-    { params: { tag: '笔记' }, props: { posts: allPost } },
+
+  const uniqueTags = [
+    ...new Set(allPost.flatMap((post) => post.frontmatter.tags.flat())),
   ]
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPost.filter((post) =>
+      post.frontmatter.tags.includes(tag),
+    )
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    }
+  })
 }
 
 const { tag } = Astro.params
 const { posts } = Astro.props
-const filteredPosts = posts.filter((post) =>
-  post.frontmatter.tags?.includes(tag),
-) //筛选出包含tag的文章
 ---
 
 <BaseLayout pageTitle={tag}>
   <p>包含「{tag}」标签的文章</p>
   <ul>
     {
-      filteredPosts.map((post) => (
+      posts.map((post) => (
         <BlogPost url={post.url} title={post.frontmatter.title} />
       ))
     }
