@@ -1,16 +1,30 @@
 ---
-const { frontmatter } = Astro.props
 import BaseLayout from './BaseLayout.astro'
+
+const { frontmatter } = Astro.props
 ---
 
 <meta charset="UTF-8" />
 <BaseLayout>
   <div>
     <h1>{frontmatter.title}</h1>
-    <p class="wrtime">发布于{frontmatter.pubDate.toString().slice(0, 10)}</p>
+    <div class="postinfo">
+      <p class="wrtime">发布于{frontmatter.pubDate.toString().slice(0, 10)}</p>
+      <div class="tags">
+        <p>标签:</p>
+        {
+          frontmatter.tags.map((tag) => (
+            <p class="tags">
+              <a href={`/tags/${tag}`}>{tag}</a>
+            </p>
+          ))
+        }
+      </div>
+    </div>
     <p class="wrauthor">Written by {frontmatter.author}</p>
   </div>
   <p><em>{frontmatter.description}</em></p>
+
   <slot />
 </BaseLayout>
 
@@ -28,13 +42,24 @@ import BaseLayout from './BaseLayout.astro'
     line-height: 1.5;
   }
 
-  .wrtime {
-    font-size: 0.9rem;
-    padding: 0;
-  }
-
   .wrauthor {
     font-size: 0.8rem;
     padding: 0;
+  }
+
+  .postinfo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    font-size: 1.2rem;
+    padding: 0;
+  }
+
+  .tags {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.2rem;
+    padding: 0;
+    gap: 0.6rem;
   }
 </style>
