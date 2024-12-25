@@ -1,0 +1,48 @@
+---
+import Baselayout from '../../layouts/BaseLayout.astro'
+const pageTitle = '标签'
+const allPosts = await Astro.glob('../posts/*.md')
+const tags = [
+  ...new Set(allPosts.flatMap((post) => post.frontmatter.tags).flat()),
+]
+---
+
+<Baselayout pageTitle={pageTitle}>
+  <div class="tags">
+    {
+      tags.map((tag) => (
+        <p class="tags">
+          <a href={`/tags/${tag}`}>{tag}</a>
+        </p>
+      ))
+    }
+  </div>
+</Baselayout>
+
+<style>
+  div {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 80ch;
+    padding: 1rem;
+    line-height: 1.5;
+  }
+
+  .tags {
+    font-size: 1.2rem;
+    padding: 0;
+  }
+
+  .tags a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  .tags a:hover {
+    color: #0070f3;
+  }
+</style>
