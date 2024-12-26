@@ -103,5 +103,21 @@ h1 {
     .hamburger {
       display: none;
     }
+
+    html.dark {
+      background-color: #414141;
+      color: #fff;
+    }
+
+    .dark .nav-links a {
+      color: #fff;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
   }
 }
