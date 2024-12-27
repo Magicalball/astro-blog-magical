@@ -1,0 +1,52 @@
+<style>
+  button {
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #bebebe;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    display: none;
+  }
+
+  button:hover {
+    background-color: #949494;
+  }
+</style>
+
+<button id="backtop">
+  <!--?xml version="1.0" ?-->
+  <svg
+    height="40"
+    viewBox="0 0 48 48"
+    width="40"
+    xmlns="http://www.w3.org/2000/svg"
+    ><path d="M14.83 30.83l9.17-9.17 9.17 9.17 2.83-2.83-12-12-12 12z"
+    ></path><path d="M0 0h48v48h-48z" fill="none"></path></svg
+  >
+</button>
+
+<script>
+  const backtopButton = document.getElementById('backtop')!
+  window.onscroll = () => {
+    const backtop = document.getElementById('backtop')!
+    if (
+      document.body.scrollTop > 300 ||
+      document.documentElement.scrollTop > 300
+    ) {
+      backtop.style.display = 'block'
+    } else {
+      backtop.style.display = 'none'
+    }
+  }
+  backtopButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  })
+</script>
