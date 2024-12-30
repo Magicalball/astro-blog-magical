@@ -6,9 +6,18 @@ html {
 body {
   margin: 0 auto;
   width: 100%;
-  max-width: 80ch;
+  max-width: 120ch;
   padding: 1rem;
   line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 1rem 0;
+  font-size: 2.5rem;
 }
 
 * {
@@ -83,9 +92,48 @@ h1 {
     display: none;
   }
 
+  .hamburger {
+    display: none;
+  }
+
   html.dark {
     background-color: #414141;
     color: #fff;
+  }
+
+  .dark .nav-links a {
+    color: #fff;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(192, 192, 192);
+    padding: 0.5rem 0.8rem;
+    position: relative;
+    z-index: 99;
+    transition: transform 0.5s linear;
+  }
+
+  /* 悬浮导航栏 */
+  .fixed-nav {
+    top: 0;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(192, 192, 192);
+    z-index: 100;
+    margin: 0 auto;
+    width: 100vw;
+    max-width: 120ch;
+    line-height: 1.5;
+    transform: translateY(20%); /* 悬浮状态 */
+  }
+
+  nav:not(.fixed-nav) {
+    transform: translateY(5%); /* 当导航栏不悬浮时，向上偏移其自身高度 */
   }
 
   .dark .nav-links a {
