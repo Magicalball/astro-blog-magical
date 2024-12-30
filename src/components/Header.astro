@@ -5,9 +5,21 @@ import ThemIcon from './ThemIcon.astro'
 ---
 
 <header>
-  <nav>
+  <nav id="navbar">
     <Hamburger />
     <Navigation />
     <ThemIcon />
   </nav>
 </header>
+
+<script>
+  const scrollThreshold = 75
+  window.addEventListener('scroll', () => {
+    var navbar = document.getElementById('navbar')
+    if (window.scrollY > scrollThreshold) {
+      navbar?.classList.add('fixed-nav')
+    } else {
+      navbar?.classList.remove('fixed-nav')
+    }
+  })
+</script>
