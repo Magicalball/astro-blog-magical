@@ -19,31 +19,6 @@ h1 {
   font-size: 2.5rem;
 }
 
-body {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 120ch;
-  padding: 1rem;
-  line-height: 1.5;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-h1 {
-  margin: 1rem 0;
-  font-size: 2.5rem;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-h1 {
-  margin: 1rem 0;
-  font-size: 2.5rem;
-}
 
 /* 汉堡样式 */
 .hamburger {
@@ -179,7 +154,7 @@ h1 {
     z-index: 100;
     margin: 0 auto;
     width: 100%;
-    max-width: 80ch;
+    max-width: 120ch;
     line-height: 1.5;
     transform: translateY(20%); /* 悬浮状态 */
   }
