@@ -1,0 +1,64 @@
+.maxblock {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 2fr; /* 中间2份，左右各1份 */
+  grid-template-rows: 2fr 2fr 1fr 2fr; /* 上下各1份，中间2份 */
+  gap: 10px;
+  max-width: 100%;
+  height: 600px;
+  padding: 0 20px;
+  background-color: rgb(158, 218, 218);
+}
+
+.span-left {
+  background-color: rgb(255, 255, 255);
+  grid-column: 1 / 3;
+  grid-row: 1 / 3; 
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.3s ease;
+}
+
+.span-above {
+  background-color:rgb(255, 255, 255);
+  grid-column: 3 / 6; 
+  grid-row: 1; 
+  padding: 16px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.span-below {
+  background-color: rgb(255, 255, 255);
+  grid-column: 1 / 5;
+  grid-row: 3 / 5; 
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.3s ease;
+}
+
+.span-right {
+  background-color: rgb(255, 255, 255);
+  grid-column: 5 / 6;
+  grid-row: 2 / 5;
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.3s ease;
+}
+
+.span-center {
+  background-color: rgb(255, 255, 255);
+  grid-column: 3 / 5; 
+  grid-row: 2; ;
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.3s ease;
+}
+
+.span-left:hover,
+.span-above:hover,
+.span-below:hover,
+.span-right:hover,
+.span-center:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
