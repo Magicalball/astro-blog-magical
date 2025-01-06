@@ -1,31 +1,46 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'
-import '../styles/global.css'
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/about.css";
+import "../styles/layout.css";
 
-const pageTitle = '关于我'
+const pageTitle = "关于我";
 const identity = {
-  bobbies: ['羽毛球', '动画', '音游'],
-  CNname: '云易轩',
-  Enname: 'Magical_ball',
-  country: 'China',
-  vocational: '学生',
-  workemail: 'yixuanyun57@gmail.com',
-}
-const skills = ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Astro']
-const skillColor = 'navy'
+  bobbies: ["羽毛球", "动画", "音游"],
+  CNname: "云易轩",
+  Enname: "Magical_ball",
+  country: "China",
+  vocational: "学生",
+  workemail: "yixuanyun57@gmail.com",
+};
+const skills = ["HTML", "CSS", "JavaScript", "Node.js", "Astro"];
+const skillColor = "navy";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <p>Name(CN): {identity.CNname}</p>
-  <p>Name(EN): {identity.Enname}</p>
-  <p>Country: {identity.country}</p>
-  <p>身份: {identity.vocational}</p>
-  <p>Email: {identity.workemail}</p>
-  <p>爱好: {identity.bobbies[0]},{identity.bobbies[1]},{identity.bobbies[2]}</p>
-  <p>技术栈:</p>
-  <ul>
-    {skills.map((skill) => <li class="skill">{skill}</li>)}
-  </ul>
+<BaseLayout>
+  <div class="block">
+    <div class="mineinfo">
+      <div class="mineinfo-avatar">
+        <img src="/public/images/mypic.jpg" alt="avatar" class="avatar" />
+      </div>
+      <div class="mineinfo-block">
+        <h1>{pageTitle}</h1>
+        <p>Name(CN): {identity.CNname}</p>
+        <p>Name(EN): {identity.Enname}</p>
+        <p>Country: {identity.country}</p>
+        <p>身份: {identity.vocational}</p>
+        <p>Email: {identity.workemail}</p>
+        <p>
+          爱好: {identity.bobbies[0]},{identity.bobbies[1]},{
+            identity.bobbies[2]
+          }
+        </p>
+        <p>技术栈:</p>
+        <ul>
+          {skills.map((skill) => <li class="skill">{skill}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
 </BaseLayout>
 
 <style is:global define:vars={{ skillColor }}>
