@@ -9,7 +9,12 @@ const allPosts = await Astro.glob('./posts/*.md')
 
 <BaseLayout pageTitle={pageTitle}>
   <p>都有些什么呀~</p>
-  <ul>
-    {allPosts.map((post) => <BlogPost url = {post.url} title = {post.frontmatter.title} /></li>)}
-  </ul>
+
+    {allPosts.map((post , index) => <BlogPost 
+      url = {post.url} 
+      title = {post.frontmatter.title} 
+      pubDate = {post.frontmatter.pubDate}
+      style = {`animation-delay: ${index * 0.2}s`}
+      /></li>)}
+
 </BaseLayout>
