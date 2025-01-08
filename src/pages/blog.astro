@@ -1,20 +1,23 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import BlogPost from '../components/BlogPost.astro';
+import BlogPost from "../components/BlogPost.astro";
 
-const pageTitle = '文章'
-const allPosts = await Astro.glob('./posts/*.md')
+const pageTitle = "文章";
+const allPosts = await Astro.glob("./posts/*.md");
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <p>都有些什么呀~</p>
 
-    {allPosts.map((post , index) => <BlogPost 
-      url = {post.url} 
-      title = {post.frontmatter.title} 
-      pubDate = {post.frontmatter.pubDate}
-      style = {`animation-delay: ${index * 0.2}s`}
-      /></li>)}
-
+  {
+    allPosts.map((post, index) => (
+      <BlogPost
+        url={post.url}
+        title={post.frontmatter.title}
+        pubDate={post.frontmatter.pubDate}
+        style={`animation-delay: ${index * 0.2}s`}
+      />
+    ))
+  }
 </BaseLayout>
