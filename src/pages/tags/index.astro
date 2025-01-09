@@ -1,17 +1,18 @@
 ---
-import Baselayout from '../../layouts/BaseLayout.astro'
-const pageTitle = '标签'
-const allPosts = await Astro.glob('../posts/*.md')
+import Baselayout from "../../layouts/BaseLayout.astro";
+import "../../styles/layout.css";
+const pageTitle = "标签";
+const allPosts = await Astro.glob("../posts/*.md");
 const tags = [
   ...new Set(allPosts.flatMap((post) => post.frontmatter.tags).flat()),
-]
+];
 ---
 
 <Baselayout pageTitle={pageTitle}>
   <div class="tags">
     {
       tags.map((tag) => (
-        <p class="tags">
+        <p class="block">
           <a href={`/tags/${tag}`}>{tag}</a>
         </p>
       ))
@@ -32,6 +33,10 @@ const tags = [
   }
 
   .tags {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 2rem;
     font-size: 1.2rem;
     padding: 0;
   }
@@ -43,5 +48,29 @@ const tags = [
 
   .tags a:hover {
     color: #0070f3;
+  }
+
+  .block {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 5px 8px #c8c8c8;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s forwards;
+    animation-delay: 0.2s;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 3px solid #c4c4c4;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
