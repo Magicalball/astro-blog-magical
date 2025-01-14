@@ -4,7 +4,7 @@ class NoticeComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isVisiable: localStorage.getItem("popClosed"),
+      isVisiable: !localStorage.getItem("popClosed"),
     };
   }
 
@@ -23,7 +23,8 @@ class NoticeComponent extends Component {
           <div style={styles.overlay}>
             <div style={styles.popup}>
               <p>站点正在施工中，敬请期待</p>
-              <button onclick={this.closeNotice} style={styles.button}>
+              <p>{this.props.noticeText}</p>
+              <button style={styles.button} onClick={this.closeNotice}>
                 关闭
               </button>
             </div>
