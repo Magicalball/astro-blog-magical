@@ -3,8 +3,10 @@ import { h, Component } from "preact";
 class NoticeComponent extends Component {
   constructor(props) {
     super(props);
+    const newUrl = new URLSearchParams(window.location.search);
+    const isClosed = newUrl.get("popClosed");
     this.state = {
-      isVisiable: !localStorage.getItem("popClosed"),
+      isVisiable: localStorage.getItem("popClosed") && !isClosed,
     };
   }
 
@@ -13,6 +15,7 @@ class NoticeComponent extends Component {
       isVisiable: false,
     });
     localStorage.setItem("popClosed", "true");
+    window.history.replaceState(null, "", "?popClosed=true");
   };
 
   render() {
