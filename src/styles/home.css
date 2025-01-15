@@ -103,3 +103,8 @@ div.span-left a {
   color: rgb(0, 0, 0);
   text-decoration: none;
 }
+
+.above-a {
+  display: flex;
+  justify-content: space-evenly;
+}

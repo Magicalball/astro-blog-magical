@@ -3,13 +3,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PostList from "../components/PostList.astro";
 import DateTime from "../components/DateTime.jsx";
 import Notice from "../components/Notice.jsx";
+import Blackboard from "../components/Blackboard.astro";
 import "../styles/home.css";
 
 const pageTitle = "魔法球的站点";
 ---
 
 <BaseLayout>
-  <Notice client:only/>
+  <Notice client:only />
   <div class="maxblock">
     <!--left -->
     <div class="span-left">
@@ -18,7 +19,10 @@ const pageTitle = "魔法球的站点";
 
     <!-- above -->
     <div class="span-above">
-      <DateTime client:load />
+      <div class="above-a">
+        <DateTime client:load />
+        <Blackboard />
+      </div>
     </div>
 
     <!-- below -->

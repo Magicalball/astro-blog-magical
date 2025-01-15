@@ -29,7 +29,7 @@ class DateTimeComponent extends Component {
     const week = new Date().getDay(); // week
     const weekName = ["日", "一", "二", "三", "四", "五", "六"];
     return (
-      <div>
+      <div class="date-time" style=" display: flex;" >
         <p>今天是{year}年{month}月{day}日 星期{weekName[week]} {this.state.date.toLocaleTimeString()}</p>  
       </div>
     );
