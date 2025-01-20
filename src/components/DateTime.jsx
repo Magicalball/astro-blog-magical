@@ -23,10 +23,10 @@ class DateTimeComponent extends Component {
   }
 
   render() {
-    const year = new Date().getFullYear(); // year
-    const month = new Date().getMonth() + 1; // month
-    const day = new Date().getDate(); // day
-    const week = new Date().getDay(); // week
+    const year = this.state.date.getFullYear(); // year
+    const month = this.state.date.getMonth() + 1; // month
+    const day = this.state.date.getDate(); // day
+    const week = this.state.date.getDay(); // week
     const weekName = ["日", "一", "二", "三", "四", "五", "六"];
     return (
       <div class="date-time" style=" display: flex;" >
