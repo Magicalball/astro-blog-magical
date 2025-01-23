@@ -10,7 +10,7 @@ export default function DateTime() {
   }, [])
 
   if (!date) {
-    return null
+    return <div style={{height: '50px',width:'300px'}}>拼命加载中...</div>
   }
 
   const year = date.getFullYear()
@@ -19,7 +19,7 @@ export default function DateTime() {
   const week = date.getDay()
   const weekName = ['日', '一', '二', '三', '四', '五', '六']
   return (
-    <div>
+    <div style={{height: '50px',width:'300px'}}>
       <p>
         今天是{year}年{month}月{day}日 星期{weekName[week]}{' '}
         {date.toLocaleTimeString()}
