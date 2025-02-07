@@ -33,7 +33,7 @@ export default function DateTime() {
         {date.toLocaleTimeString()}
       </p>
       <div>
-        <p style={{ padding: "0px" , margin: '5px'}}>今日时间还剩下：</p>
+        <p style={{ padding: "0px" , margin: '5px,0px'}}>今日时间已使用：</p>
         <div
           style={{
             height: "20px",
