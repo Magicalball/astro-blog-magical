@@ -8,6 +8,8 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/image": "^0.18.0",
+    "@astrojs/mdx": "^4.0.8",
     "@astrojs/preact": "^4.0.1",
     "@astrojs/rss": "^4.0.10",
     "astro": "^5.1.1",

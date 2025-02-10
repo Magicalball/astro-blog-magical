@@ -1,0 +1,86 @@
+---
+layout: ../../layouts/MarkdownPostLayout.astro
+title: "【小白向】Windows 使用Docker快速安装Mysql"
+pubDate: "2022-10-13"
+author: 'Magicalball'
+tags: ['学习']
+---
+
+import Image from '../../components/Pimage.tsx';
+
+
+（文章内容很简单，是我重装系统时顺便写的，求别喷）
+
+今天我们来使用[docker](https://so.csdn.net/so/search?q=docker&spm=1001.2101.3001.7020) 快速安装mysql 和docker ，话不多说，直接上步骤
+
+# **1、安装docker**
+
+进入docker网站 [Docker Hub](https://hub.docker.com/) 下载 Docker Desktop Installer.exe
+
+如果没有登录可能无法下载 这里附上百度网盘链接
+
+[https://pan.baidu.com/s/1fhb7Zjml4HSDeseT8SuvWA](https://pan.baidu.com/s/1fhb7Zjml4HSDeseT8SuvWA) 提取码：7vxk
+
+<Image src="/pimages/4a4232ceb4744c178d2b24f227c8bccb.png" width="700px" />
+
+打开应用， 选择 I accept the terms
+
+<Image src="/pimages/2991fffcddb948edbe40b9ed030e18be.png" width="700px" />
+
+稍等一会儿，程序会在后台运行
+
+确保安装成功后 我们打开使用windows+r 打开命令行 
+
+输入docker -version 
+
+<Image src="/pimages/b5f650792a4c455fa0fecccf960e652d.png" width="700px" />
+
+上图代表安装成功
+
+# 2、安装mysql
+
+在窗口中运行如下指令：
+
+```
+docker pull mysql:latest
+
+```
+
+<Image src="/pimages/7a44fd4feab7434d887130d0d3e00237.png" width="700px" />
+
+然后输入这一行 其中123456代表mysql初始密码
+
+```
+docker run -itd --name mysql-test -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql
+```
+
+<Image src="/pimages/bd0021dd8fad49b988a5b64ec68e5105.png" width="700px" />
+
+使用以下命令配置访问权限
+
+###### 进入容器
+
+docker exec -it mysql-test bash
+
+###### 登录mysql
+
+mysql -u root -p  
+123456
+
+###### 设置mysql远程权限
+
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql\_native\_password BY '123456';
+
+###### 刷新权限
+
+flush privileges;
+
+  
+
+<Image src="/pimages/549b222ae99c47caa4ca2f8c03ca0dfb.png" width="700px" />
+
+ **至此mysql 安装结束**
+
+## 3、链接navicat 测试一下
+
+<Image src="/pimages/cf40dc37a53d4d2dac7ab7eb7a540efd.png" width="700px" />

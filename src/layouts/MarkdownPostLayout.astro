@@ -1,7 +1,7 @@
 ---
-import BaseLayout from './BaseLayout.astro'
-
-const { frontmatter } = Astro.props
+import BaseLayout from "./BaseLayout.astro";
+import PostLayout from "./PostLayout.astro";
+const { frontmatter } = Astro.props;
 ---
 
 <meta charset="UTF-8" />
@@ -24,7 +24,6 @@ const { frontmatter } = Astro.props
     <p class="wrauthor">Written by {frontmatter.author}</p>
   </div>
   <p><em>{frontmatter.description}</em></p>
-
   <slot />
 </BaseLayout>
 
