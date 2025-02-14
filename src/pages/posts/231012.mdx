@@ -1,0 +1,61 @@
+---
+layout: ../../layouts/MarkdownPostLayout.astro
+title: "【算法入门】级数求和（持续更新ing）"
+pubDate: "2023-10-12"
+tags: ['学习']
+---
+import Image from '../../components/Pimage.tsx';
+
+**题目**
+
+<Image src="/pimages/23103501.png" width="700px" />
+
+**输入格式**
+
+一个正整数 _k_。
+
+**输出格式**
+
+一个正整数_n_。
+
+**输入输出样例**
+
+<table><tbody><tr><td>输入</td><td>输出</td></tr><tr><td>1</td><td>2</td></tr></tbody></table>
+
+**说明提示**
+
+数据范围
+
+<Image src="/pimages/23103502.png" width="700px" />
+
+提示：
+
+题目来源：[P1035 \[NOIP2002 普及组\] 级数求和 - 洛谷 | 计算机科学教育新生态 (luogu.com.cn)](https://www.luogu.com.cn/problem/P1035)
+
+* * *
+
+**解题思路**
+
+思路
+
+代码一：
+
+```
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int k, n;
+    double sum = 0;
+    cin >> k;
+    for (n = 1;; n++)
+    {
+        sum +=  1.0 / n;
+        if (sum > k)
+        {
+            break;
+        }
+    }
+    cout << n;
+}
+```

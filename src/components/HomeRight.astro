@@ -1,0 +1,26 @@
+---
+import PostList from './PostList.astro'
+---
+
+<h2>最近更新</h2>
+<PostList />
+<div class="more">
+    <button onclick="window.location.href='/blog'">查看更多</button>
+</div>
+
+<style>
+    .more {
+        text-align: center;
+        margin-top: 20px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #f0f0f0;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #e0e0e0;
+    }
+</style>
