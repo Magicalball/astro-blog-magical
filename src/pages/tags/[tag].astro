@@ -3,7 +3,7 @@ import BlogPost from '../../components/BlogPost.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 
 export async function getStaticPaths() {
-  const allPost = await Astro.glob('../posts/*.md')
+  const allPost = await Astro.glob('../posts/*.{md,mdx}')
 
   const uniqueTags = [
     ...new Set(allPost.flatMap((post) => post.frontmatter.tags.flat())),
