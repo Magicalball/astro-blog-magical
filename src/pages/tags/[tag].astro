@@ -1,16 +1,17 @@
 ---
-import BlogPost from '../../components/BlogPost.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import VirtualBlogList from '../../components/VirtualBlogList.tsx'
+import { normalizePost } from '../../utils/getPosts'
 
 export async function getStaticPaths() {
-  const allPost = await Astro.glob('../posts/*.{md,mdx}')
+  const allPost: any[] = await Astro.glob('../posts/*.{md,mdx}')
 
-  const uniqueTags = [
-    ...new Set(allPost.flatMap((post) => post.frontmatter.tags.flat())),
+  const uniqueTags: string[] = [
+    ...new Set(allPost.flatMap((post: any) => post.frontmatter.tags.flat())),
   ]
 
-  return uniqueTags.map((tag) => {
-    const filteredPosts = allPost.filter((post) =>
+  return uniqueTags.map((tag: string) => {
+    const filteredPosts = allPost.filter((post: any) =>
       post.frontmatter.tags.includes(tag),
     )
     return {
@@ -22,15 +23,16 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params
 const { posts } = Astro.props
+
+// 为虚拟滚动准备标准化的文章数据
+const virtualScrollPosts = posts.map(normalizePost)
 ---
 
 <BaseLayout pageTitle={tag}>
   <p>包含「{tag}」标签的文章</p>
-  <ul>
-    {
-      posts.map((post) => (
-        <BlogPost url={post.url} title={post.frontmatter.title} />
-      ))
-    }
-  </ul>
+  
+  <VirtualBlogList 
+    posts={virtualScrollPosts} 
+    client:load 
+  />
 </BaseLayout>

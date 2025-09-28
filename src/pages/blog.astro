@@ -1,23 +1,22 @@
 ---
 import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import BlogPost from "../components/BlogPost.astro";
+import VirtualBlogList from "../components/VirtualBlogList.tsx";
 
 const pageTitle = "文章";
 const allPosts = await Astro.glob("./posts/*.{md,mdx}");
+const sortedPosts = allPosts.sort(
+  (a: any, b: any) => new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime()
+);
+
+// 使用虚拟滚动优化性能
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <p>都有些什么呀~</p>
 
-  {
-    allPosts.map((post, index) => (
-      <BlogPost
-        url={post.url}
-        title={post.frontmatter.title}
-        pubDate={post.frontmatter.pubDate}
-        style={`animation-delay: ${index * 0.2}s`}
-      />
-    ))
-  }
+  <VirtualBlogList 
+    posts={sortedPosts} 
+    client:load 
+  />
 </BaseLayout>
