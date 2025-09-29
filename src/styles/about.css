@@ -13,6 +13,22 @@
   overflow: visible;
 }
 
+:global(.dark) .mineinfo-block {
+  color: rgb(255, 255, 255);
+}
+
+:global(.dark) .mineinfo-block p {
+  color: rgb(255, 255, 255);
+}
+
+:global(.dark) .mineinfo-block ul {
+  color: rgb(255, 255, 255);
+}
+
+:global(.dark) .mineinfo-block li {
+  color: rgb(255, 255, 255);
+}
+
 .mineinfo-avatar {
   display: flex;
   grid-column: 1 / 2;
@@ -30,4 +46,8 @@ img {
   border: 2px solid rgb(0, 0, 0);
   overflow: hidden;
   margin: auto;
+}
+
+:global(.dark) img {
+  border: 2px solid rgb(255, 255, 255);
 }

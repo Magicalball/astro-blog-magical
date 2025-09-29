@@ -14,4 +14,12 @@ const { platform, username, store } = Astro.props;
   a:hover {
     color: rgb(0, 0, 0);
   }
+
+  :global(.dark) a {
+    color: rgb(200, 200, 200);
+  }
+
+  :global(.dark) a:hover {
+    color: rgb(255, 255, 255);
+  }
 </style>

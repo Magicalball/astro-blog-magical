@@ -9,6 +9,10 @@
   background-color: rgb(237, 218, 225);
 }
 
+.dark .maxblock {
+  background-color: #1a1a1a;
+}
+
 .span-left {
   background-color: rgb(255, 255, 255);
   box-shadow: 0 3px 6px #9a9a9a;
@@ -22,6 +26,11 @@
   align-items: center;
 }
 
+.dark .span-left {
+  background-color: #2a2a2a;
+  box-shadow: 0 3px 6px #000000;
+}
+
 .span-above {
   background-color: rgb(255, 255, 255);
   box-shadow: 0 3px 6px #9a9a9a;
@@ -30,6 +39,11 @@
   padding: 16px;
   border-radius: 12px;
   transition: all 0.3s ease;
+}
+
+.dark .span-above {
+  background-color: #2a2a2a;
+  box-shadow: 0 3px 6px #000000;
 }
 
 .span-below {
@@ -42,6 +56,11 @@
   transition: all 0.3s ease;
 }
 
+.dark .span-below {
+  background-color: #2a2a2a;
+  box-shadow: 0 3px 6px #000000;
+}
+
 .span-right {
   background-color: rgb(255, 255, 255);
   box-shadow: 0 3px 6px #9a9a9a;
@@ -52,6 +71,11 @@
   transition: all 0.3s ease;
 }
 
+.dark .span-right {
+  background-color: #2a2a2a;
+  box-shadow: 0 3px 6px #000000;
+}
+
 .span-center {
   background-color: rgb(255, 255, 255);
   box-shadow: 0 3px 6px #9a9a9a;
@@ -60,6 +84,11 @@
   border-radius: 12px;
   padding: 16px;
   transition: all 0.3s ease;
+}
+
+.dark .span-center {
+  background-color: #2a2a2a;
+  box-shadow: 0 3px 6px #000000;
 }
 
 .span-left:hover,
@@ -107,6 +136,10 @@
 div.span-left a {
   color: rgb(0, 0, 0);
   text-decoration: none;
+}
+
+.dark div.span-left a {
+  color: rgb(255, 255, 255);
 }
 
 .above-a {

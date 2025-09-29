@@ -2,11 +2,30 @@ import { useEffect, useRef, useState } from "preact/hooks";
 
 export default function DateTime() {
   const [date, setDate] = useState<Date | null>(null);
+  const [isDark, setIsDark] = useState(false);
   const interval = useRef<number | null>(null);
 
   useEffect(() => {
-    interval.current = setInterval(() => setDate(new Date()), 1000);
-    return () => clearInterval(interval.current!);
+    interval.current = window.setInterval(() => setDate(new Date()), 1000);
+
+    // 检查当前主题
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains('dark'))
+    }
+    
+    checkTheme()
+    
+    // 监听主题变化
+    const observer = new MutationObserver(checkTheme)
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    })
+    
+    return () => {
+      clearInterval(interval.current!);
+      observer.disconnect();
+    };
   }, []);
 
   if (!date) {
@@ -38,7 +57,7 @@ export default function DateTime() {
           style={{
             height: "20px",
             width: "100%",
-            backgroundColor: "#e0e0e0",
+            backgroundColor: isDark ? "#3a3a3a" : "#e0e0e0",
             borderRadius: "10px",
           }}
         >
@@ -47,7 +66,7 @@ export default function DateTime() {
             style={{
               height: "100%",
               width: `${updateProgress()}%`,
-              backgroundColor: "#76c7c0",
+              backgroundColor: isDark ? "#4a9eff" : "#76c7c0",
               borderRadius: "10px",
               transition: "width 1s",
             }}

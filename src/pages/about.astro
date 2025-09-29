@@ -48,8 +48,16 @@ const skillColor = "navy";
     color: rgb(39, 121, 214);
     font-size: 3rem;
   }
+
+  :global(.dark) h1 {
+    color: rgb(100, 180, 255);
+  }
   .skill {
     color: var(--skillColor);
     font-weight: bold;
+  }
+  
+  :global(.dark) .skill {
+    color: #66b3ff !important;
   }
 </style>

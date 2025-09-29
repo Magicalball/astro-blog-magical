@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title2 desc2">
+  <title id="title2">魔法小屋 — 徽章标志（暗色）</title>
+  <desc id="desc2">极简几何徽章（暗色版），适应深色主题。</desc>
+
+  <rect width="64" height="64" rx="12" fill="#111217"/>
+  <polygon points="32,15 49,32 32,49 15,32" fill="#FFFFFF"/>
+  <rect x="28" y="26" width="8" height="12" rx="3" fill="#111217"/>
+  <circle cx="44" cy="20" r="3.75" fill="#111217" stroke="#FFFFFF" stroke-width="1.5"/>
+</svg>

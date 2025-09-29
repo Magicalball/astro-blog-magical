@@ -1,10 +1,10 @@
 ---
-import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import VirtualBlogList from "../components/VirtualBlogList.tsx";
 
 const pageTitle = "文章";
-const allPosts = await Astro.glob("./posts/*.{md,mdx}");
+const globResult = import.meta.glob("./posts/*.{md,mdx}");
+const allPosts = await Promise.all(Object.values(globResult).map(fn => fn()));
 const sortedPosts = allPosts.sort(
   (a: any, b: any) => new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime()
 );

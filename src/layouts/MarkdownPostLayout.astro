@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-import PostLayout from "./PostLayout.astro";
 const { frontmatter } = Astro.props;
 ---
 
@@ -13,7 +12,7 @@ const { frontmatter } = Astro.props;
       <div class="tags">
         <p>标签:</p>
         {
-          frontmatter.tags.map((tag) => (
+          frontmatter.tags.map((tag: string) => (
             <p class="tags">
               <a href={`/tags/${tag}`}>{tag}</a>
             </p>
@@ -59,5 +58,28 @@ const { frontmatter } = Astro.props;
     font-size: 1.2rem;
     padding: 0;
     gap: 0.6rem;
+  }
+
+  .tags a {
+    text-decoration: none;
+    color: #0070f3;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background-color: rgba(0, 112, 243, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .tags a:hover {
+    background-color: rgba(0, 112, 243, 0.2);
+    transform: scale(1.05);
+  }
+
+  :global(.dark) .tags a {
+    color: #66b3ff;
+    background-color: rgba(102, 179, 255, 0.15);
+  }
+
+  :global(.dark) .tags a:hover {
+    background-color: rgba(102, 179, 255, 0.25);
   }
 </style>

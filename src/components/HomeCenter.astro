@@ -1,12 +1,3 @@
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Caveat&family=Lusitana:wght@400;700&display=swap"
-    rel="stylesheet"
-  />
-</head>
-
 <div class="logodiv">
   <p class="logotext">Magical_ball's Blog</p>
 </div>
@@ -18,6 +9,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* 防止字体加载时的布局抖动 */
+    min-height: 3.2rem;
   }
   .logotext {
     font-family: "Caveat", serif;
@@ -27,8 +20,40 @@
     font-size: 2.5rem;
     color: #000;
     transition: transform 0.3s ease;
+    /* 锁定文本容器尺寸防止抖动 */
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    /* 为Caveat字体预留合适空间 */
+    min-width: 320px;
+    line-height: 1.2;
+  }
+
+  :global(.dark) .logotext {
+    color: #ffffff;
   }
   .logodiv:hover .logotext {
     transform: scale(1.05);
+  }
+
+  /* 移动端响应式适配 */
+  @media (max-width: 636px) {
+    .logotext {
+      min-width: 280px;
+      font-size: 2.2rem;
+    }
+    .logodiv {
+      min-height: 2.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .logotext {
+      min-width: 240px;
+      font-size: 1.8rem;
+    }
+    .logodiv {
+      min-height: 2.4rem;
+    }
   }
 </style>

@@ -4,6 +4,11 @@ html {
   font-family: sans-serif;
 }
 
+html.dark {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
 body {
   margin: 0 auto;
   width: 100%;
@@ -34,6 +39,10 @@ h1 {
   background-color: #405feb;
 }
 
+.dark .hamburger .line {
+  background-color: #7c9fff;
+}
+
 /* 导航样式 */
 
 .nav-links {
@@ -45,6 +54,10 @@ h1 {
   margin: 0;
 }
 
+.dark .nav-links {
+  background-color: #333333;
+}
+
 .nav-links a {
   display: block;
   text-align: center;
@@ -54,11 +67,18 @@ h1 {
   font-weight: bold;
   text-transform: uppercase;
   color: #4c4c4c;
+  transition: background-color 0.3s ease;
+  background-color: transparent;
 }
 
 .nav-links a:hover,
 .nav-links a:focus {
-  background-color: #969696;
+  background-color: rgba(150, 150, 150, 0.3);
+}
+
+.dark .nav-links a:hover,
+.dark .nav-links a:focus {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .expanded {
@@ -71,25 +91,19 @@ h1 {
     display: block;
     position: static;
     width: auto;
-    background: none;
+    background: none !important;
   }
 
   .nav-links a {
     display: inline-block;
     padding: 15px 20px;
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+    background-color: transparent;
   }
 
   .hamburger {
     display: none;
-  }
-
-  .hamburger {
-    display: none;
-  }
-
-  html.dark {
-    background-color: #414141;
-    color: #fff;
   }
 
   .dark .nav-links a {
@@ -107,39 +121,8 @@ h1 {
     transition: transform 0.5s linear;
   }
 
-  /* 悬浮导航栏 */
-  .fixed-nav {
-    top: 0;
-    position: fixed;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(192, 192, 192);
-    z-index: 100;
-    margin: 0 auto;
-    width: 100vw;
-    max-width: 120ch;
-    line-height: 1.5;
-    transform: translateY(20%); /* 悬浮状态 */
-  }
-
-  nav:not(.fixed-nav) {
-    transform: translateY(5%); /* 当导航栏不悬浮时，向上偏移其自身高度 */
-  }
-
-  .dark .nav-links a {
-    color: #fff;
-  }
-
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(192, 192, 192);
-    padding: 0.5rem 0.8rem;
-    position: relative;
-    z-index: 99;
-    transition: transform 0.5s linear;
+  .dark nav {
+    background-color: #2a2a2a;
   }
 
   /* 固定导航栏 */
@@ -157,6 +140,10 @@ h1 {
     max-width: 120ch;
     line-height: 1.5;
     transform: translateY(20%); /* 悬浮状态 */
+  }
+
+  .dark .fixed-nav {
+    background-color: #2a2a2a;
   }
 
   nav:not(.fixed-nav) {

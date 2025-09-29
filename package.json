@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "build:analyze": "astro build --config astro.config.mjs",
+    "preview": "astro preview",
+    "clean": "rm -rf dist .astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.8",

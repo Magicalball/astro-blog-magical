@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">魔法小屋 — 徽章标志</title>
+  <desc id="desc">极简几何徽章，抽象表达"魔法小屋"的温暖与神秘，适合作为网站 favicon。</desc>
+
+  <!-- 背景：柔和圆角方块作为徽章底 -->
+  <rect width="64" height="64" rx="12" fill="#FBF7FF"/>
+
+  <!-- 主体：菱形符号（抽象徽章） -->
+  <polygon points="32,15 49,32 32,49 15,32" fill="#8A63FF"/>
+
+  <!-- 负空间竖缝：中心留白，增加标识性与"通道"意味 -->
+  <rect x="28" y="26" width="8" height="12" rx="3" fill="#FBF7FF"/>
+
+  <!-- 点缀：偏移小圆，作为"光/点/花意"点睛（描边增强在小尺寸下可识别） -->
+  <circle cx="44" cy="20" r="3.75" fill="#FBF7FF" stroke="#8A63FF" stroke-width="1.5"/>
+</svg>

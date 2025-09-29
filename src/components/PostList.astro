@@ -1,5 +1,6 @@
 ---
-const allPosts = await Astro.glob("../pages/posts/*.{md,mdx}");
+const globResult = import.meta.glob("../pages/posts/*.{md,mdx}");
+const allPosts = await Promise.all(Object.values(globResult).map(fn => fn()));
 const sortedPosts = allPosts.sort(
   (a: any, b: any) => new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime()
 ).slice(0,7);
@@ -7,7 +8,7 @@ const sortedPosts = allPosts.sort(
 
 <ul>
   {
-    sortedPosts.map((post) => (
+    sortedPosts.map((post: any) => (
       <li>
         <p class="post-list">
           <a href={post.url} class="pltitle">
@@ -40,6 +41,10 @@ const sortedPosts = allPosts.sort(
     transition: transform 0.3s;
   }
 
+  :global(.dark) a::after {
+    background-color: #cccccc;
+  }
+
   a:hover::after {
     transform: scaleX(1);
     transform-origin: left;
@@ -68,6 +73,10 @@ const sortedPosts = allPosts.sort(
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 10em;
+  }
+
+  :global(.dark) .pltitle {
+    color: #cccccc;
   }
 
   @media (max-width: 800px) {
@@ -102,6 +111,14 @@ const sortedPosts = allPosts.sort(
     width: 1px;
     height: 175%;
     background-color: #333; /* 连接线 */
+  }
+
+  :global(.dark) li::before {
+    background-color: #cccccc;
+  }
+
+  :global(.dark) li::after {
+    background-color: #cccccc;
   }
 
   li:last-child::after {

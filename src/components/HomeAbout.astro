@@ -26,6 +26,10 @@
     border-radius: 12px;
   }
 
+  :global(.dark) .background-container {
+    background-color: #2a2a2a;
+  }
+
   .hasecond {
     position: absolute;
     top: 50%;
@@ -43,6 +47,10 @@
     z-index: 2;
     transition: all 0.3s ease;
     opacity: 0;
+  }
+
+  :global(.dark) .hasecond {
+    background-color: rgba(60, 60, 60, 0.7);
   }
 
   .homeabout:hover .background-container {

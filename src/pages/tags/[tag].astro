@@ -4,7 +4,8 @@ import VirtualBlogList from '../../components/VirtualBlogList.tsx'
 import { normalizePost } from '../../utils/getPosts'
 
 export async function getStaticPaths() {
-  const allPost: any[] = await Astro.glob('../posts/*.{md,mdx}')
+  const globResult = import.meta.glob('../posts/*.{md,mdx}');
+  const allPost: any[] = await Promise.all(Object.values(globResult).map(fn => fn()));
 
   const uniqueTags: string[] = [
     ...new Set(allPost.flatMap((post: any) => post.frontmatter.tags.flat())),

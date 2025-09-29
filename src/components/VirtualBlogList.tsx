@@ -14,6 +14,7 @@ export default function VirtualBlogList({
 }: VirtualBlogListProps) {
   const [scrollTop, setScrollTop] = useState(0);
   const [containerHeight, setContainerHeight] = useState(800); // 动态计算容器高度
+  const [isDark, setIsDark] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // 计算可见范围 (优化依赖)
@@ -78,10 +79,24 @@ export default function VirtualBlogList({
     });
   };
 
-  // 绑定页面滚动事件
+  // 绑定页面滚动事件和主题检测
   useEffect(() => {
     // 初始化容器高度
     setContainerHeight(window.innerHeight);
+    
+    // 检查当前主题
+    const checkTheme = () => {
+      setIsDark(document.documentElement.classList.contains('dark'))
+    }
+    
+    checkTheme()
+    
+    // 监听主题变化
+    const observer = new MutationObserver(checkTheme)
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    })
     
     // 监听页面滚动
     window.addEventListener('scroll', handlePageScroll, { passive: true });
@@ -94,6 +109,7 @@ export default function VirtualBlogList({
       // 清理事件监听器
       window.removeEventListener('scroll', handlePageScroll);
       window.removeEventListener('resize', handlePageScroll);
+      observer.disconnect();
       
       // 清理待执行的动画帧
       if (scrollTimeoutRef.current) {
@@ -128,6 +144,27 @@ export default function VirtualBlogList({
     const pubDate = post.frontmatter?.pubDate || post.pubDate;
     
     const formattedDate = getFormattedDate(pubDate);
+    
+    // 悬停状态处理
+    const handleMouseEnter = (e: Event) => {
+      const target = e.currentTarget as HTMLElement;
+      target.style.boxShadow = isDark ? '0 8px 12px rgba(0, 0, 0, 0.5)' : '0 8px 12px rgba(0, 0, 0, 0.2)';
+    };
+    
+    const handleMouseLeave = (e: Event) => {
+      const target = e.currentTarget as HTMLElement;
+      target.style.boxShadow = isDark ? '0 5px 8px #000000' : '0 5px 8px #c8c8c8';
+    };
+    
+    const handleLinkMouseEnter = (e: Event) => {
+      const target = e.currentTarget as HTMLElement;
+      target.style.color = isDark ? '#66b3ff' : '#0066cc';
+    };
+    
+    const handleLinkMouseLeave = (e: Event) => {
+      const target = e.currentTarget as HTMLElement;
+      target.style.color = 'inherit';
+    };
 
     return (
       <section
@@ -142,13 +179,40 @@ export default function VirtualBlogList({
           // 移除动画延迟以减少内存占用
         }}
       >
-        <div class="block">
-          <h2>
-            <a href={url} style={{ textDecoration: 'none', color: 'inherit' }}>
+        <div 
+          class="block"
+          style={{
+            backgroundColor: isDark ? '#2a2a2a' : 'rgb(255, 255, 255)',
+            color: isDark ? '#ffffff' : '#000000',
+            boxShadow: isDark ? '0 5px 8px #000000' : '0 5px 8px #c8c8c8',
+            borderBottom: isDark ? '3px solid #555555' : '3px solid #c4c4c4'
+          }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <h2 style={{ 
+            margin: '0 0 10px 0',
+            fontSize: '1.5rem',
+            color: 'inherit'
+          }}>
+            <a 
+              href={url} 
+              style={{ 
+                textDecoration: 'none', 
+                color: 'inherit',
+                transition: 'color 0.3s ease'
+              }}
+              onMouseEnter={handleLinkMouseEnter}
+              onMouseLeave={handleLinkMouseLeave}
+            >
               {title}
             </a>
           </h2>
-          <p>{formattedDate}</p>
+          <p style={{
+            margin: '0',
+            fontSize: '0.9rem',
+            color: isDark ? '#cccccc' : '#666666'
+          }}>{formattedDate}</p>
         </div>
       </section>
     );
@@ -169,7 +233,6 @@ export default function VirtualBlogList({
           display: flex;
           flex-direction: column;
           border-radius: 8px;
-          box-shadow: 0 5px 8px #c8c8c8;
           overflow: hidden;
           opacity: 0;
           transform: translateY(20px);
@@ -177,9 +240,12 @@ export default function VirtualBlogList({
           animation-delay: 0.2s;
           background-size: cover;
           background-position: center;
-          border-bottom: 3px solid #c4c4c4;
-          background-color: rgb(255, 255, 255);
           padding: 16px;
+          transition: all 0.3s ease;
+        }
+
+        .virtual-blog-list .block:hover {
+          transform: translateY(-2px);
         }
 
         @keyframes fadeInUp {

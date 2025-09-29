@@ -1,5 +1,5 @@
 ---
-import blacknotice from '../pages/posts/blackboard.md';
+// 公告板组件 - 显示站点公告
 ---
 
 <div class="blackboard">
@@ -61,6 +61,11 @@ import blacknotice from '../pages/posts/blackboard.md';
         grid-template-rows: 1fr 1fr;
         gap: 10px;
         
+    }
+
+    :global(.dark) .blackboard {
+        background-color: #2a2a2a;
+        color: #ffffff;
     }
     .blackboard p {
         margin: 0;
