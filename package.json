@@ -15,5 +15,8 @@
     "@astrojs/rss": "^4.0.10",
     "astro": "^5.1.1",
     "preact": "^10.25.3"
+  },
+  "devDependencies": {
+    "terser": "^5.44.0"
   }
 }

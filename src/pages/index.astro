@@ -11,7 +11,7 @@ import "../styles/home.css";
 ---
 
 <BaseLayout>
-  <Notice client:only />
+  <Notice client:only="preact" />
   <div class="maxblock">
     <!--left -->
     <div class="span-left">
@@ -21,7 +21,7 @@ import "../styles/home.css";
     <!-- above -->
     <div class="span-above">
       <div class="above-a">
-        <DateTime client:load />
+        <DateTime client:visible />
         <Blackboard />
       </div>
     </div>

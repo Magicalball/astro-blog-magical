@@ -23,9 +23,75 @@ const { pageTitle } = Astro.props;
     />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="魔法小屋 - Magical_ball的个人博客，分享编程知识、技术文章和生活感悟。轻青化诗，烟雨成画。"
+    />
+    <meta
+      name="keywords"
+      content="博客,编程,技术,JavaScript,HTML,CSS,Node.js,Astro,魔法小屋,Magical_ball"
+    />
+    <meta name="author" content="Magical_ball (云易轩)" />
+    <meta name="robots" content="index, follow" />
+
     <title>魔法小屋-Magical_ball's Blog</title>
 
-    <!-- 字体预加载优化 -->
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="魔法小屋-Magical_ball's Blog" />
+    <meta
+      property="og:description"
+      content="魔法小屋 - Magical_ball的个人博客，分享编程知识、技术文章和生活感悟。轻青化诗，烟雨成画。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://magicalball.blog" />
+    <meta property="og:site_name" content="魔法小屋" />
+    <meta property="og:locale" content="zh_CN" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="魔法小屋-Magical_ball's Blog" />
+    <meta
+      name="twitter:description"
+      content="魔法小屋 - Magical_ball的个人博客，分享编程知识、技术文章和生活感悟。"
+    />
+    <meta name="twitter:creator" content="@Magical_ball" />
+
+    <!-- Browser Optimization Meta Tags -->
+    <meta
+      name="theme-color"
+      content="#405feb"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#7c9fff"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <!-- 关键图片预加载优化 (LCP优化) -->
+    <link
+      rel="preload"
+      href="/images/homea.jpg"
+      as="image"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      href="/images/mypic.jpg"
+      as="image"
+      fetchpriority="high"
+    />
+
+    <!-- DNS预解析和预连接优化 -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
