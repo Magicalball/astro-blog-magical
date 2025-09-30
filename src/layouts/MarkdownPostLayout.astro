@@ -1,18 +1,27 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import { validateFrontmatter } from "../utils/validation";
+import { resolveCoverImage } from "../utils/assets";
 const { frontmatter } = Astro.props;
+const fm = validateFrontmatter(frontmatter);
+const cover = resolveCoverImage(fm.coverImage);
 ---
 
 <meta charset="UTF-8" />
-<BaseLayout>
+<BaseLayout 
+  seoTitle={fm.title}
+  seoDescription={fm.description}
+  seoAuthor={fm.author}
+  seoOgImage={cover}
+>
   <div>
-    <h1>{frontmatter.title}</h1>
+    <h1>{fm.title}</h1>
     <div class="postinfo">
-      <p class="wrtime">发布于{frontmatter.pubDate.toString().slice(0, 10)}</p>
+      <p class="wrtime">发布于{fm.pubDate.toString().slice(0, 10)}</p>
       <div class="tags">
         <p>标签:</p>
         {
-          frontmatter.tags.map((tag: string) => (
+          (fm.tags || []).map((tag: string) => (
             <p class="tags">
               <a href={`/tags/${tag}`}>{tag}</a>
             </p>
@@ -20,9 +29,9 @@ const { frontmatter } = Astro.props;
         }
       </div>
     </div>
-    <p class="wrauthor">Written by {frontmatter.author}</p>
+    <p class="wrauthor">Written by {fm.author}</p>
   </div>
-  <p><em>{frontmatter.description}</em></p>
+  <p><em>{fm.description}</em></p>
   <slot />
 </BaseLayout>
 

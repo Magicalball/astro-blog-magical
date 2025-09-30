@@ -1,12 +1,12 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
+layout: ../../../layouts/MarkdownPostLayout.astro
 title: "【小白向】Windows 使用Docker快速安装Mysql"
 pubDate: "2022-10-13"
 author: 'Magicalball'
 tags: ['学习']
 ---
 
-import Image from '../../components/Pimage.tsx';
+import Image from '../../../components/Pimage.tsx';
 
 
 （文章内容很简单，是我重装系统时顺便写的，求别喷）
@@ -21,11 +21,11 @@ import Image from '../../components/Pimage.tsx';
 
 [https://pan.baidu.com/s/1fhb7Zjml4HSDeseT8SuvWA](https://pan.baidu.com/s/1fhb7Zjml4HSDeseT8SuvWA) 提取码：7vxk
 
-<Image src="/pimages/4a4232ceb4744c178d2b24f227c8bccb.png" width="700px" />
+<Image src="/images/posts/221013/4a4232ceb4744c178d2b24f227c8bccb.png" width="700px" />
 
 打开应用， 选择 I accept the terms
 
-<Image src="/pimages/2991fffcddb948edbe40b9ed030e18be.png" width="700px" />
+<Image src="/images/posts/221013/2991fffcddb948edbe40b9ed030e18be.png" width="700px" />
 
 稍等一会儿，程序会在后台运行
 
@@ -33,7 +33,7 @@ import Image from '../../components/Pimage.tsx';
 
 输入docker -version 
 
-<Image src="/pimages/b5f650792a4c455fa0fecccf960e652d.png" width="700px" />
+<Image src="/images/posts/221013/b5f650792a4c455fa0fecccf960e652d.png" width="700px" />
 
 上图代表安装成功
 
@@ -46,7 +46,7 @@ docker pull mysql:latest
 
 ```
 
-<Image src="/pimages/7a44fd4feab7434d887130d0d3e00237.png" width="700px" />
+<Image src="/images/posts/221013/7a44fd4feab7434d887130d0d3e00237.png" width="700px" />
 
 然后输入这一行 其中123456代表mysql初始密码
 
@@ -54,7 +54,7 @@ docker pull mysql:latest
 docker run -itd --name mysql-test -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql
 ```
 
-<Image src="/pimages/bd0021dd8fad49b988a5b64ec68e5105.png" width="700px" />
+<Image src="/images/posts/221013/bd0021dd8fad49b988a5b64ec68e5105.png" width="700px" />
 
 使用以下命令配置访问权限
 
@@ -77,10 +77,10 @@ flush privileges;
 
   
 
-<Image src="/pimages/549b222ae99c47caa4ca2f8c03ca0dfb.png" width="700px" />
+<Image src="/images/posts/221013/549b222ae99c47caa4ca2f8c03ca0dfb.png" width="700px" />
 
  **至此mysql 安装结束**
 
 ## 3、链接navicat 测试一下
 
-<Image src="/pimages/cf40dc37a53d4d2dac7ab7eb7a540efd.png" width="700px" />
+<Image src="/images/posts/221013/cf40dc37a53d4d2dac7ab7eb7a540efd.png" width="700px" />

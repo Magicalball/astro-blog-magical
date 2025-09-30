@@ -16,6 +16,23 @@ body {
   line-height: 1.5;
 }
 
+/* Theme-aware variables scoped to navbar only */
+#navbar {
+  --hamburger-color: #4a4a4a; /* deep gray for light theme */
+  --hamburger-color-hover: #333333;
+  --nav-mobile-bg: rgba(255, 255, 255, 0.92);
+  --nav-link-color: #4c4c4c;
+  --nav-link-hover-bg: rgba(150, 150, 150, 0.15);
+}
+
+.dark #navbar {
+  --hamburger-color: #e6e6e6; /* light gray close to white for dark theme */
+  --hamburger-color-hover: #ffffff;
+  --nav-mobile-bg: rgba(42, 42, 42, 0.95);
+  --nav-link-color: #ffffff;
+  --nav-link-hover-bg: rgba(255, 255, 255, 0.1);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -23,6 +40,22 @@ body {
 h1 {
   margin: 1rem 0;
   font-size: 2.5rem;
+}
+
+/* Ensure navbar items are horizontally aligned on small screens too */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(192, 192, 192);
+  padding: 0.5rem 0.8rem;
+  position: relative;
+  z-index: 99;
+  transition: transform 0.5s linear;
+}
+
+.dark nav {
+  background-color: #2a2a2a;
 }
 
 /* 汉堡样式 */
@@ -36,11 +69,13 @@ h1 {
   width: 40px;
   height: 5px;
   margin-bottom: 10px;
-  background-color: #405feb;
+  background-color: var(--hamburger-color, #405feb);
+  transition: background-color 0.2s ease;
 }
 
-.dark .hamburger .line {
-  background-color: #7c9fff;
+.hamburger:hover .line,
+.hamburger:focus .line {
+  background-color: var(--hamburger-color-hover, #2b79d1);
 }
 
 /* 导航样式 */
@@ -49,13 +84,10 @@ h1 {
   width: 100%;
   top: 5rem;
   left: 48px;
-  background-color: #9c9c9c;
+  background-color: var(--nav-mobile-bg, #9c9c9c);
   display: none;
   margin: 0;
-}
-
-.dark .nav-links {
-  background-color: #333333;
+  position: absolute;
 }
 
 .nav-links a {
@@ -66,19 +98,14 @@ h1 {
   font-size: 1.2rem;
   font-weight: bold;
   text-transform: uppercase;
-  color: #4c4c4c;
+  color: var(--nav-link-color, #4c4c4c);
   transition: background-color 0.3s ease;
   background-color: transparent;
 }
 
 .nav-links a:hover,
 .nav-links a:focus {
-  background-color: rgba(150, 150, 150, 0.3);
-}
-
-.dark .nav-links a:hover,
-.dark .nav-links a:focus {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--nav-link-hover-bg, rgba(150, 150, 150, 0.3));
 }
 
 .expanded {
@@ -104,10 +131,6 @@ h1 {
 
   .hamburger {
     display: none;
-  }
-
-  .dark .nav-links a {
-    color: #fff;
   }
 
   nav {

@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
+layout: ../../../layouts/MarkdownPostLayout.astro
 title: '四月是你的谎言'
 pubDate: '2022-03-28'
 author: 'Magicalball'

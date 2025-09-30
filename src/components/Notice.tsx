@@ -33,9 +33,9 @@ export default function Notice() {
     isVisiable && (
       <div style={styles.overlay}>
         <div style={isDark ? styles.popupDark : styles.popup}>
-          <p>站点正在施工中，敬请期待</p>
+          <p>站点正在升级施工中，部分功能给您带来不便，敬请谅解</p>
           <button style={styles.button} onClick={closeNotice}>
-            关闭
+            点击进入
           </button>
         </div>
       </div>

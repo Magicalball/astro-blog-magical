@@ -1,13 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import VirtualBlogList from "../components/VirtualBlogList.tsx";
+import { normalizePost } from "../utils/getPosts";
+import { getComparableUtcTime } from "../utils/validation";
 
 const pageTitle = "文章";
-const globResult = import.meta.glob("./posts/*.{md,mdx}");
+const globResult = import.meta.glob("./posts/**/*.{md,mdx}");
 const allPosts = await Promise.all(Object.values(globResult).map(fn => fn()));
-const sortedPosts = allPosts.sort(
-  (a: any, b: any) => new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime()
-);
+const normalized = allPosts.map((p: any) => normalizePost(p));
+const sortedPosts = normalized
+  .slice()
+  .sort((a, b) => getComparableUtcTime(b.pubDate) - getComparableUtcTime(a.pubDate));
 
 // 使用虚拟滚动优化性能
 ---

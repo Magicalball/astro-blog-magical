@@ -2,11 +2,17 @@
 import Baselayout from "../../layouts/BaseLayout.astro";
 import "../../styles/layout.css";
 const pageTitle = "标签";
-const globResult = import.meta.glob("../posts/*.md");
+import { normalizePost } from "../../utils/getPosts";
+
+const globResult = import.meta.glob("../posts/**/*.{md,mdx}");
 const allPosts = await Promise.all(Object.values(globResult).map((fn: any) => fn()));
+const normalized = allPosts.map((p: any) => normalizePost(p));
 const tags = [
-  ...new Set(allPosts.flatMap((post: any) => post.frontmatter.tags).flat()),  
-];
+  ...new Set(
+    normalized
+      .flatMap((post: any) => (post.tags || []).map((t: string) => t.trim()).filter(Boolean))
+  ),  
+].sort((a, b) => a.localeCompare(b));
 ---
 
 <Baselayout pageTitle={pageTitle}>

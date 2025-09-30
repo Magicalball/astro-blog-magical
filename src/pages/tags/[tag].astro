@@ -2,19 +2,22 @@
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import VirtualBlogList from '../../components/VirtualBlogList.tsx'
 import { normalizePost } from '../../utils/getPosts'
+import { getComparableUtcTime } from '../../utils/validation'
 
 export async function getStaticPaths() {
-  const globResult = import.meta.glob('../posts/*.{md,mdx}');
-  const allPost: any[] = await Promise.all(Object.values(globResult).map(fn => fn()));
+  const globResult = import.meta.glob('../posts/**/*.{md,mdx}');
+  const allPostRaw: any[] = await Promise.all(Object.values(globResult).map(fn => fn()));
+  const allPost = allPostRaw.map((p: any) => normalizePost(p));
 
   const uniqueTags: string[] = [
-    ...new Set(allPost.flatMap((post: any) => post.frontmatter.tags.flat())),
+    ...new Set(allPost.flatMap((post: any) => (post.tags || []).flat())),
   ]
 
   return uniqueTags.map((tag: string) => {
-    const filteredPosts = allPost.filter((post: any) =>
-      post.frontmatter.tags.includes(tag),
-    )
+    const filteredPosts = allPost
+      .filter((post: any) => (post.tags || []).includes(tag))
+      .slice()
+      .sort((a: any, b: any) => getComparableUtcTime(b.pubDate) - getComparableUtcTime(a.pubDate))
     return {
       params: { tag },
       props: { posts: filteredPosts },
@@ -24,9 +27,7 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params
 const { posts } = Astro.props
-
-// 为虚拟滚动准备标准化的文章数据
-const virtualScrollPosts = posts.map(normalizePost)
+const virtualScrollPosts = posts
 ---
 
 <BaseLayout pageTitle={tag}>

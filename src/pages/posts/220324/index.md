@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
+layout: ../../../layouts/MarkdownPostLayout.astro
 title: "轻青化诗"
 pubDate: "2022-03-24"
 author: 'Magicalball'

@@ -3,11 +3,28 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import "../styles/global.css";
 
-const { pageTitle } = Astro.props;
+const { pageTitle, seoTitle, seoDescription, seoAuthor, seoOgImage } = Astro.props;
 ---
 
 <html lang="zh-cn">
   <head>
+    <script is:inline>
+      (function() {
+        try {
+          var stored = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var isDark = stored ? stored === 'dark' : prefersDark;
+          var root = document.documentElement;
+          if (isDark) {
+            root.classList.add('dark');
+          } else {
+            root.classList.remove('dark');
+          }
+        } catch (e) {
+          /* noop */
+        }
+      })();
+    </script>
     <meta charset="utf-8" />
     <link
       rel="icon"
@@ -27,23 +44,24 @@ const { pageTitle } = Astro.props;
     <!-- SEO Meta Tags -->
     <meta
       name="description"
-      content="魔法小屋 - Magical_ball的个人博客，分享编程知识、技术文章和生活感悟。轻青化诗，烟雨成画。"
+      content={seoDescription || "魔法小屋 - Magical_ball的个人博客，分享编程知识、技术文章和生活感悟。轻青化诗，烟雨成画。"}
     />
     <meta
       name="keywords"
       content="博客,编程,技术,JavaScript,HTML,CSS,Node.js,Astro,魔法小屋,Magical_ball"
     />
-    <meta name="author" content="Magical_ball (云易轩)" />
+    <meta name="author" content={seoAuthor || "Magical_ball (云易轩)"} />
     <meta name="robots" content="index, follow" />
 
-    <title>魔法小屋-Magical_ball's Blog</title>
+    <title>{seoTitle || "魔法小屋-Magical_ball's Blog"}</title>
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="魔法小屋-Magical_ball's Blog" />
+    <meta property="og:title" content={seoTitle || "魔法小屋-Magical_ball's Blog"} />
     <meta
       property="og:description"
-      content="魔法小屋 - Magical_ball的个人博客，分享编程知识、技术文章和生活感悟。轻青化诗，烟雨成画。"
+      content={seoDescription || "魔法小屋 - Magical_ball的个人博客，分享编程知识、技术文章和生活感悟。轻青化诗，烟雨成画。"}
     />
+    {seoOgImage && (<meta property="og:image" content={seoOgImage} />)}
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://magicalball.blog" />
     <meta property="og:site_name" content="魔法小屋" />
@@ -51,12 +69,13 @@ const { pageTitle } = Astro.props;
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="魔法小屋-Magical_ball's Blog" />
+    <meta name="twitter:title" content={seoTitle || "魔法小屋-Magical_ball's Blog"} />
     <meta
       name="twitter:description"
-      content="魔法小屋 - Magical_ball的个人博客，分享编程知识、技术文章和生活感悟。"
+      content={seoDescription || "魔法小屋 - Magical_ball的个人博客，分享编程知识、技术文章和生活感悟。"}
     />
     <meta name="twitter:creator" content="@Magical_ball" />
+    {seoOgImage && (<meta name="twitter:image" content={seoOgImage} />)}
 
     <!-- Browser Optimization Meta Tags -->
     <meta
@@ -76,19 +95,14 @@ const { pageTitle } = Astro.props;
     <meta name="referrer" content="strict-origin-when-cross-origin" />
 
     <!-- 关键图片预加载优化 (LCP优化) -->
-    <link
-      rel="preload"
-      href="/images/homea.webp"
-      as="image"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      href="/images/mypic.webp"
-      as="image"
-      fetchpriority="high"
-    />
-
+    {Astro.url.pathname === "/" && (
+      <link
+        rel="preload"
+        href="/images/homea.webp"
+        as="image"
+        fetchpriority="high"
+      />
+    )}
     <!-- DNS预解析和预连接优化 -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />

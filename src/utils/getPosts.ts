@@ -1,3 +1,4 @@
+import { validateFrontmatter } from './validation';
 // 文章数据获取工具函数
 export interface PostData {
   url: string;
@@ -10,18 +11,17 @@ export interface PostData {
 
 // 从 Astro.glob 结果转换为标准化的文章数据
 export function normalizePost(post: any): PostData {
+  // 轻量校验与标准化（不改变渲染结构）
+  const fm = validateFrontmatter(post.frontmatter);
   return {
     url: post.url,
-    title: post.frontmatter.title,
-    pubDate: post.frontmatter.pubDate,
-    author: post.frontmatter.author,
-    tags: post.frontmatter.tags || [],
-    description: post.frontmatter.description
+    title: fm.title,
+    pubDate: fm.pubDate,
+    author: fm.author,
+    tags: fm.tags || [],
+    description: fm.description
   };
 }
-
-// 注意：getAllPosts, getPaginatedPosts, getPostsByTag 函数已删除
-// 因为当前项目中没有使用这些函数，直接在各页面中使用 Astro.glob
 
 // 虚拟滚动配置
 export const VIRTUAL_LIST_CONFIG = {
