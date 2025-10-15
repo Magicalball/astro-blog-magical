@@ -17,6 +17,11 @@
     background-color: #949494;
   }
 
+  /* 仅给非背景路径（非 fill="none" 的 path）着色 */
+  button svg path:not([fill="none"]) {
+    fill: #000000;
+  }
+
   :global(.dark) button {
     background-color: #3a3a3a;
   }
@@ -25,8 +30,8 @@
     background-color: #4a4a4a;
   }
 
-  :global(.dark) button svg path {
-    fill: #ffffff00;//切换白色的svg
+  :global(.dark) button svg path:not([fill="none"]) {
+    fill: #ffffff;//切换白色的svg
   }
 </style>
 

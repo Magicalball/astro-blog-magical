@@ -1,9 +1,11 @@
 ---
-const globResult = import.meta.glob("../pages/posts/*.{md,mdx}");
-const allPosts = await Promise.all(Object.values(globResult).map(fn => fn()));
-const sortedPosts = allPosts.sort(
-  (a: any, b: any) => new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime()
-).slice(0,7);
+const allPosts = await Astro.glob("../pages/posts/**/*.{md,mdx}");
+const sortedPosts = allPosts
+  .filter((p: any) => p?.frontmatter?.pubDate)
+  .sort(
+    (a: any, b: any) => new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime()
+  )
+  .slice(0, 7);
 ---
 
 <ul>
