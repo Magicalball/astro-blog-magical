@@ -1,0 +1,240 @@
+/* 时间轴容器 */
+.timeline-container {
+  position: relative;
+  padding-left: 20px;
+  padding-bottom: 40px;
+}
+
+/* 时间轴线条 */
+.timeline-line {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: rgb(0, 0, 0);
+  transition: background-color 0.3s ease;
+  z-index: 0;
+  min-height: 100px;
+}
+
+.dark .timeline-line {
+  background-color: rgb(255, 255, 255);
+}
+
+/* 时间节点项 */
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 40px;
+}
+
+/* 时间节点（圆圈） */
+.timeline-node {
+  position: absolute;
+  left: 14px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  z-index: 1;
+}
+
+.dark .timeline-node {
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255);
+}
+
+/* 日期显示 */
+.timeline-date {
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+
+.dark .timeline-date {
+  color: rgb(255, 255, 255);
+}
+
+/* 小卡片 */
+.event-card {
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 3px 6px #9a9a9a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  max-width: 600px;
+}
+
+.dark .event-card {
+  background-color: #2a2a2a;
+  box-shadow: 0 3px 6px #000000;
+}
+
+.event-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dark .event-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.event-card-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 8px 0;
+  color: rgb(0, 0, 0);
+}
+
+.dark .event-card-title {
+  color: rgb(255, 255, 255);
+}
+
+.event-card-description {
+  font-size: 14px;
+  margin: 0;
+  color: rgb(0, 0, 0);
+}
+
+.dark .event-card-description {
+  color: rgb(255, 255, 255);
+}
+
+/* 遮罩层 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* 弹窗 */
+.event-modal {
+  position: fixed;
+  max-width: 800px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  box-sizing: border-box;
+}
+
+.dark .event-modal {
+  background-color: #2a2a2a;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* 关闭按钮 */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  padding: 0;
+}
+
+.dark .modal-close {
+  background-color: #3a3a3a;
+  color: #ccc;
+}
+
+.modal-close:hover {
+  background-color: #e0e0e0;
+}
+
+.dark .modal-close:hover {
+  background-color: #4a4a4a;
+}
+
+/* 弹窗内容 */
+.modal-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 0 12px 0;
+  color: rgb(0, 0, 0);
+  padding-right: 40px;
+}
+
+.dark .modal-title {
+  color: rgb(255, 255, 255);
+}
+
+.modal-description {
+  font-size: 16px;
+  margin: 0 0 16px 0;
+  color: rgb(0, 0, 0);
+}
+
+.dark .modal-description {
+  color: rgb(255, 255, 255);
+}
+
+.modal-content {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgb(0, 0, 0);
+}
+
+.dark .modal-content {
+  color: rgb(255, 255, 255);
+}
+
+/* 响应式设计 */
+@media (max-width: 636px) {
+  .timeline-container {
+    padding-left: 16px;
+  }
+
+  .timeline-line {
+    left: 16px;
+  }
+
+  .timeline-item {
+    padding-left: 32px;
+  }
+
+  .timeline-node {
+    left: 10px;
+    width: 10px;
+    height: 10px;
+  }
+
+  .timeline-date {
+    font-size: 12px;
+  }
+
+  .event-card {
+    max-width: 100%;
+  }
+
+  .event-modal {
+    width: 90%;
+    max-height: 85vh;
+    padding: 16px;
+  }
+}

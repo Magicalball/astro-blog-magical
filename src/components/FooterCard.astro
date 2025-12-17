@@ -1,0 +1,91 @@
+---
+import Backtop from "./Backtop.astro";
+import Social from "./Social.astro";
+---
+
+<div class="footer-card">
+  <Backtop />
+  <footer class="foot">
+    <p>
+      © 2024-{ new Date().getFullYear() } Magicalball | <a href="https://beian.miit.gov.cn/" target="_blank"
+        >辽ICP备2024038289号</a>
+    </p>
+    <p>
+      Learn more about my projects on <Social
+        platform="github"
+        username="Magicalball"
+        store="astro-blog-magical"
+      /> !
+    </p>
+  </footer>
+</div>
+
+<style>
+  .footer-card {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 3px 6px #9a9a9a;
+    border-radius: 12px;
+    padding: 16px 20px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+  }
+  
+  @media (min-width: 637px) {
+    .footer-card {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 636px) {
+    .footer-card {
+      width: calc(100vw - 40px) !important;
+    }
+  }
+
+  :global(.dark) .footer-card {
+    background-color: #2a2a2a;
+    box-shadow: 0 3px 6px #000000;
+  }
+
+  .footer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  :global(.dark) .footer-card:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .footer-card footer {
+    gap: 1rem;
+    margin-top: 0;
+  }
+
+  .footer-card .foot p {
+    text-align: center;
+    color: rgb(80, 79, 79);
+    font-size: 0.8rem;
+  }
+
+  :global(.dark) .footer-card .foot p {
+    color: rgb(200, 200, 200);
+  }
+
+  .footer-card a {
+    text-decoration: none;
+    color: rgb(126, 126, 126);
+  }
+
+  .footer-card a:hover {
+    color: rgb(0, 0, 0);
+  }
+
+  :global(.dark) .footer-card a {
+    color: rgb(180, 180, 180);
+  }
+
+  :global(.dark) .footer-card a:hover {
+    color: rgb(255, 255, 255);
+  }
+</style>
+

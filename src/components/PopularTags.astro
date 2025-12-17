@@ -1,0 +1,185 @@
+---
+// 热门标签组件 - 显示使用频率最高的标签
+import { normalizePost } from "../utils/getPosts";
+
+const globResult = import.meta.glob("../pages/posts/**/*.{md,mdx}");
+const allPosts = await Promise.all(Object.values(globResult).map((fn: any) => fn()));
+const normalized = allPosts.map((p: any) => normalizePost(p));
+
+// 统计标签使用频率
+const tagCountMap = new Map<string, number>();
+normalized.forEach((post: any) => {
+  (post.tags || []).forEach((tag: string) => {
+    const trimmedTag = tag.trim();
+    if (trimmedTag) {
+      tagCountMap.set(trimmedTag, (tagCountMap.get(trimmedTag) || 0) + 1);
+    }
+  });
+});
+
+// 按频率排序并取前6个热门标签
+const popularTags = Array.from(tagCountMap.entries())
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 6)
+  .map(([tag]) => tag);
+---
+
+<div class="popular-tags">
+  <a href="/tags/" class="title-link">
+    <section>
+      <svg
+        enable-background="new 0 0 32 32"
+        height="32px"
+        id="Layer_1"
+        version="1.1"
+        viewBox="0 0 32 32"
+        width="32px"
+        xml:space="preserve"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+      >
+        <path
+          d="M4,2C2.896,2,2,2.896,2,4v24c0,1.104,0.896,2,2,2h24c1.104,0,2-0.896,2-2V4c0-1.104-0.896-2-2-2H4z M4,4h24v24H4V4z M8,8h16v2H8V8z M8,12h16v2H8V12z M8,16h12v2H8V16z"
+          fill="currentColor"
+        />
+      </svg>
+      热门标签
+    </section>
+  </a>
+
+  <div class="tags-container">
+    {popularTags.length > 0 ? (
+      popularTags.map((tag) => (
+        <a href={`/tags/${tag}`} class="tag-link">
+          {tag}
+        </a>
+      ))
+    ) : (
+      <p class="no-tags">暂无标签</p>
+    )}
+  </div>
+</div>
+
+<style>
+  .popular-tags {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    justify-content: flex-start;
+    color: #333;
+  }
+
+  :global(.dark) .popular-tags {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+  }
+
+  .title-link {
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  .title-link:hover {
+    transform: translateY(-2px);
+  }
+
+  .popular-tags section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+    cursor: pointer;
+  }
+
+  :global(.dark) .popular-tags section {
+    color: #e0e0e0;
+  }
+
+  .title-link:hover .popular-tags section {
+    color: #000;
+  }
+
+  :global(.dark) .title-link:hover .popular-tags section {
+    color: #ffffff;
+  }
+
+  .popular-tags section svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: #333;
+    transition: all 0.3s ease;
+  }
+
+  :global(.dark) .popular-tags section svg {
+    color: #e0e0e0;
+  }
+
+  .title-link:hover .popular-tags section svg {
+    color: #000;
+    transform: scale(1.1);
+  }
+
+  :global(.dark) .title-link:hover .popular-tags section svg {
+    color: #ffffff;
+  }
+
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .tag-link {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #ffffff;
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 1px solid #d0d0d0;
+  }
+
+  .tag-link:hover {
+    background-color: #e8e8e8;
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-color: #999;
+  }
+
+  :global(.dark) .tag-link {
+    background-color: #2a2a2a;
+    color: #d0d0d0;
+    border-color: #444;
+  }
+
+  :global(.dark) .tag-link:hover {
+    background-color: #3a3a3a;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border-color: #666;
+  }
+
+  .no-tags {
+    margin: 0;
+    color: #999;
+    font-size: 0.9rem;
+  }
+
+  :global(.dark) .no-tags {
+    color: #888;
+  }
+</style>
+

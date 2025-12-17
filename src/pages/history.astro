@@ -1,12 +1,42 @@
 ---
 import "../styles/layout.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Timeline from "../components/Timeline/Timeline.tsx";
 
 const pageTitle = "建站历史";
+
+// 示例数据
+const events = [
+  {
+    id: "1",
+    date: "2020-02-02",
+    time: "10:00",
+    title: "事件一",
+    description: "新特性发布",
+    content: "这是事件一的详细内容。包含了更多的信息和描述。"
+  },
+  {
+    id: "2",
+    date: "2020-02-03",
+    time: "14:30",
+    title: "事件二",
+    description: "新特性发布",
+    content: "这是事件二的详细内容。包含了更多的信息和描述。"
+  },
+  {
+    id: "3",
+    date: "2020-02-04",
+    time: "09:15",
+    title: "事件三",
+    description: "新特性发布",
+    content: "这是事件三的详细内容。包含了更多的信息和描述。"
+  }
+];
 ---
-<BaseLayout>
+<BaseLayout pageTitle={pageTitle}>
     <div>
-        <h1>{pageTitle}</h1>
         <p>这里记录了网站的曾经些许~</p>
+        
+        <Timeline events={events} client:visible />
     </div>
 </BaseLayout>

@@ -29,4 +29,9 @@ pnpm-debug.log*
 # vscode setting folder
 .vscode/
 
+# local files
 bun.lock
+.specstory/
+docs/
+tmp/
+.cursorindexingignore

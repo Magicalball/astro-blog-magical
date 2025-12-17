@@ -1,9 +1,11 @@
 ---
 import Footer from "../components/Footer.astro";
+import FooterCard from "../components/FooterCard.astro";
 import Header from "../components/Header.astro";
 import "../styles/global.css";
 
 const { pageTitle, seoTitle, seoDescription, seoAuthor, seoOgImage } = Astro.props;
+const isHomePage = Astro.url.pathname === "/";
 ---
 
 <html lang="zh-cn">
@@ -115,10 +117,16 @@ const { pageTitle, seoTitle, seoDescription, seoAuthor, seoOgImage } = Astro.pro
   </head>
 
   <body>
-    <Header />
+    {Astro.url.pathname !== "/" && <Header />}
     <h1>{pageTitle}</h1>
     <slot />
-    <Footer />
+    {isHomePage ? (
+      <div class="home-footer-container">
+        <FooterCard />
+      </div>
+    ) : (
+      <Footer />
+    )}
 
     <script>
       import "../scripts/menu.js";

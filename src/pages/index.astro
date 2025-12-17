@@ -2,7 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import DateTime from "../components/DateTime.tsx";
 import Notice from "../components/Notice.tsx";
-import Blackboard from "../components/Blackboard.astro";
+import PopularTags from "../components/PopularTags.astro";
+import WelcomeCard from "../components/WelcomeCard.astro";
 import HomeAbout from "../components/HomeAbout.astro";
 import HomeCenter from "../components/HomeCenter.astro";
 import Blewbox from "../components/Blewbox.astro";
@@ -12,6 +13,9 @@ import "../styles/home.css";
 
 <BaseLayout>
   <Notice client:only="preact" />
+  <div class="home-top-card">
+    <WelcomeCard />
+  </div>
   <div class="maxblock">
     <!--left -->
     <div class="span-left">
@@ -22,7 +26,7 @@ import "../styles/home.css";
     <div class="span-above">
       <div class="above-a">
         <DateTime client:visible />
-        <Blackboard />
+        <PopularTags />
       </div>
     </div>
 

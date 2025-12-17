@@ -6,7 +6,7 @@
   max-width: 100%;
   height: 600px;
   padding: 0 20px;
-  background-color: rgb(237, 218, 225);
+  background-color: rgb(255, 255, 255);
 }
 
 .dark .maxblock {
@@ -105,30 +105,43 @@
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     height: 100%;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;
+    overflow: hidden; /* 防止子元素超出 */
+  }
+
+  .span-left,
+  .span-above,
+  .span-below,
+  .span-right,
+  .span-center {
+    grid-column: 1;
+    min-width: 0; /* 防止 grid 子元素超出 */
+    max-width: 100%; /* 确保不超过父容器 */
+    box-sizing: border-box;
+    overflow: hidden; /* 防止内容溢出 */
   }
 
   .span-left {
-    grid-column: 1;
     grid-row: 1;
+    margin: 0;
   }
 
   .span-above {
-    grid-column: 1;
     grid-row: 2;
   }
 
   .span-below {
-    grid-column: 1;
     grid-row: 3;
   }
 
   .span-right {
-    grid-column: 1;
     grid-row: 4;
   }
 
   .span-center {
-    grid-column: 1;
     grid-row: 5;
   }
 }
@@ -145,4 +158,38 @@ div.span-left a {
 .above-a {
   display: flex;
   justify-content: space-evenly;
+}
+
+.home-top-card {
+  max-width: 100%;
+  margin: 0 auto 10px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.home-footer-container {
+  max-width: 100%;
+  margin: 10px auto 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 636px) {
+  .home-top-card {
+    padding: 0;
+    width: 100%;
+  }
+
+  .home-footer-container {
+    padding: 0;
+    width: 100%;
+  }
+  
+  .home-top-card .welcome-card,
+  .home-footer-container .footer-card {
+    margin: 0 20px;
+    width: calc(100% - 40px) !important;
+    max-width: none !important;
+    box-sizing: border-box;
+  }
 }
