@@ -16,21 +16,22 @@ body {
   line-height: 1.5;
 }
 
-/* Theme-aware variables scoped to navbar only */
 #navbar {
-  --hamburger-color: #4a4a4a; /* deep gray for light theme */
+  --hamburger-color: #4a4a4a;
   --hamburger-color-hover: #333333;
   --nav-mobile-bg: rgba(255, 255, 255, 0.92);
   --nav-link-color: #4c4c4c;
+  --nav-link-hover-color: #000000;
   --nav-link-hover-bg: rgba(150, 150, 150, 0.15);
 }
 
 .dark #navbar {
-  --hamburger-color: #e6e6e6; /* light gray close to white for dark theme */
+  --hamburger-color: #e6e6e6;
   --hamburger-color-hover: #ffffff;
   --nav-mobile-bg: rgba(42, 42, 42, 0.95);
   --nav-link-color: #ffffff;
-  --nav-link-hover-bg: rgba(255, 255, 255, 0.1);
+  --nav-link-hover-color: #66b3ff;
+  --nav-link-hover-bg: rgba(102, 179, 255, 0.16);
 }
 
 * {
@@ -42,7 +43,6 @@ h1 {
   font-size: 2.5rem;
 }
 
-/* Ensure navbar items are horizontally aligned on small screens too */
 nav {
   display: flex;
   justify-content: space-between;
@@ -62,6 +62,7 @@ nav {
 .hamburger {
   padding-right: 20px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .hamburger .line {
@@ -70,24 +71,34 @@ nav {
   height: 5px;
   margin-bottom: 10px;
   background-color: var(--hamburger-color, #405feb);
-  transition: background-color 0.2s ease;
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 .hamburger:hover .line,
-.hamburger:focus .line {
-  background-color: var(--hamburger-color-hover, #2b79d1);
+.hamburger:focus-visible .line {
+  opacity: 0.85;
 }
 
-/* 导航样式 */
+.hamburger:focus,
+.hamburger:focus-visible {
+  outline: none;
+}
+
+.hamburger:active .line {
+  transform: scaleX(0.92);
+}
 
 .nav-links {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
   width: 100%;
-  top: 5rem;
-  left: 48px;
-  background-color: var(--nav-mobile-bg, #9c9c9c);
+  background-color: inherit;
   display: none;
   margin: 0;
-  position: absolute;
+  padding: 0.25rem 0;
+  box-shadow: none;
 }
 
 .nav-links a {
@@ -99,13 +110,14 @@ nav {
   font-weight: bold;
   text-transform: uppercase;
   color: var(--nav-link-color, #4c4c4c);
-  transition: background-color 0.3s ease;
+  transition: color 0.2s ease, background-color 0.2s ease;
   background-color: transparent;
 }
 
 .nav-links a:hover,
 .nav-links a:focus {
   background-color: var(--nav-link-hover-bg, rgba(150, 150, 150, 0.3));
+  color: var(--nav-link-hover-color, var(--nav-link-color));
 }
 
 .expanded {
@@ -124,9 +136,17 @@ nav {
   .nav-links a {
     display: inline-block;
     padding: 15px 20px;
-    transition: background-color 0.3s ease;
     border-radius: 8px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus {
     background-color: transparent;
+    color: var(--nav-link-hover-color, var(--nav-link-color));
+  }
+
+  .nav-links a:active {
+    opacity: 0.9;
   }
 
   .hamburger {
@@ -148,7 +168,6 @@ nav {
     background-color: #2a2a2a;
   }
 
-  /* 固定导航栏 */
   .fixed-nav {
     top: 0;
     position: fixed;
@@ -162,7 +181,7 @@ nav {
     width: 100%;
     max-width: 120ch;
     line-height: 1.5;
-    transform: translateY(20%); /* 悬浮状态 */
+    transform: translateY(20%);
   }
 
   .dark .fixed-nav {
@@ -170,6 +189,6 @@ nav {
   }
 
   nav:not(.fixed-nav) {
-    transform: translateY(5%); /* 当导航栏不悬浮时，向上偏移其自身高度 */
+    transform: translateY(5%);
   }
 }

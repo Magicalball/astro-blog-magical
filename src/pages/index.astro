@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import DateTime from "../components/DateTime.tsx";
-import Notice from "../components/Notice.tsx";
+// import Notice from "../components/Notice.tsx";
 import PopularTags from "../components/PopularTags.astro";
 import WelcomeCard from "../components/WelcomeCard.astro";
 import HomeAbout from "../components/HomeAbout.astro";
@@ -12,7 +12,7 @@ import "../styles/home.css";
 ---
 
 <BaseLayout>
-  <Notice client:only="preact" />
+  <!-- <Notice client:only="preact" /> -->
   <div class="home-top-card">
     <WelcomeCard />
   </div>

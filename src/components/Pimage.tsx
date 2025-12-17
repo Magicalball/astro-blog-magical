@@ -50,6 +50,7 @@ const Image = ({
       style={{ 
         width: width, 
         height: height,
+        maxWidth: '100%',
         opacity: loaded ? 1 : 0.8,
         transition: 'opacity 0.3s ease'
       }}

@@ -109,7 +109,7 @@
     max-width: 100%;
     box-sizing: border-box;
     padding: 0 20px;
-    overflow: hidden; /* 防止子元素超出 */
+    overflow: hidden;
   }
 
   .span-left,
@@ -118,10 +118,10 @@
   .span-right,
   .span-center {
     grid-column: 1;
-    min-width: 0; /* 防止 grid 子元素超出 */
-    max-width: 100%; /* 确保不超过父容器 */
+    min-width: 0;
+    max-width: 100%;
     box-sizing: border-box;
-    overflow: hidden; /* 防止内容溢出 */
+    overflow: hidden;
   }
 
   .span-left {
@@ -143,6 +143,7 @@
 
   .span-center {
     grid-row: 5;
+    margin-bottom: 10px;
   }
 }
 
@@ -181,6 +182,7 @@ div.span-left a {
   }
 
   .home-footer-container {
+    margin-top: 0;
     padding: 0;
     width: 100%;
   }

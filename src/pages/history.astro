@@ -5,38 +5,64 @@ import Timeline from "../components/Timeline/Timeline.tsx";
 
 const pageTitle = "建站历史";
 
-// 示例数据
 const events = [
   {
     id: "1",
-    date: "2020-02-02",
-    time: "10:00",
-    title: "事件一",
-    description: "新特性发布",
-    content: "这是事件一的详细内容。包含了更多的信息和描述。"
+    date: "2022-03-24",
+    time: "",
+    title: "站点起源",
+    description: "作为USTIL站点",
+    content: 
+    "起源于USTIL站点，初入实验室在刘学长的帮助下搭建了USTIL站点，站点基于WordPress搭建服务端采用宝塔面板，并发布了第一篇测试用例文章<a href='/posts/220324' style='text-decoration: none; color: blue'>《轻青化诗》</a>"
   },
   {
     id: "2",
-    date: "2020-02-03",
-    time: "14:30",
-    title: "事件二",
-    description: "新特性发布",
-    content: "这是事件二的详细内容。包含了更多的信息和描述。"
+    date: "2022-10-05",
+    time: "",
+    title: "作为USTIL博客站",
+    description: "更新域名为USTIL博客站点",
+    content: "后续作为USTIL博客站点，并和大家一起维护发布一些文章。"
   },
   {
     id: "3",
-    date: "2020-02-04",
-    time: "09:15",
-    title: "事件三",
-    description: "新特性发布",
-    content: "这是事件三的详细内容。包含了更多的信息和描述。"
+    date: "2023-09-01",
+    time: "23:18",
+    title: "闭站&迁移为个人博客站",
+    description: "实验室服务器到期，无人接手博客站，迁移至个人服务器",
+    content: "换届以后无人接手博客站和站点服务器，到期后备份相关数据，并于2024年8月8日闭站，并在丁哥帮助下迁移至个人服务器。"
+  },
+  {
+    id: "4",
+    date: "2024-08-05",
+    time: "",
+    title: "服务关闭",
+    description: "服务器到期忘记续费导致资源被回收",
+    content: "换届以后无人接手博客站和站点服务器，到期后备份相关数据，并于2024年8月8日闭站，并在丁哥帮助下迁移至个人服务器。"
+  },
+  {
+    id: "5",
+    date:"2024-12-17",
+    time: "",
+    title: "个人博客站",
+    description: "基于Astro搭建新个人博客站并引入旧有文章",
+    content: ""
+  },
+  {
+    id: "6",
+    date: "2025-02-07",
+    time: "",
+    title: "个人博客站（测试版）托管至Vercel",
+    description: "个人博客站（测试版）托管至Vercel",
+    content: ""
   }
 ];
+
+const sortedEvents = events.slice().sort((a, b) => Number(b.id) - Number(a.id));
 ---
 <BaseLayout pageTitle={pageTitle}>
     <div>
         <p>这里记录了网站的曾经些许~</p>
-        
-        <Timeline events={events} client:visible />
+
+        <Timeline events={sortedEvents} client:visible />
     </div>
 </BaseLayout>
