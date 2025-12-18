@@ -1,14 +1,14 @@
 // @ts-check
 import preact from "@astrojs/preact";
 import mdx from "@astrojs/mdx";
-import vercel from "@astrojs/vercel";
+import vercel from "@astrojs/vercel/static";
 import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://magicalball.top',
   output: "static",
-  adapter: vercel(),
+  adapter: vercel({}),
   integrations: [preact(), mdx()],
   // 关键性能优化配置
   devToolbar: {
