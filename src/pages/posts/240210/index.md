@@ -6,7 +6,7 @@ author: 'Magicalball'
 tags: ['mine']
 ---
 
-<!-- ![](images/image-598x1024.png) -->
+![](/images/posts/240210/image.webp)
 
 一年忧喜今宵过，两鬓风霜明日新。  
 书剑自怜多病客，江湖同是放歌人。

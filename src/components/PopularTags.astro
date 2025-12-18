@@ -17,10 +17,10 @@ normalized.forEach((post: any) => {
   });
 });
 
-// 按频率排序并取前6个热门标签
+// 按频率排序并取前5个热门标签
 const popularTags = Array.from(tagCountMap.entries())
   .sort((a, b) => b[1] - a[1])
-  .slice(0, 6)
+  .slice(0, 5)
   .map(([tag]) => tag);
 ---
 

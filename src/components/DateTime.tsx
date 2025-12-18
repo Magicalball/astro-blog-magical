@@ -46,7 +46,7 @@ export default function DateTime() {
   };
 
   return (
-    <div style={{ height: "50px", width: "300px" }}>
+    <div>
       <p class="time-text">
         今天是{year}年{month}月{day}日 星期{weekName[week]}{" "}
         {date.toLocaleTimeString()}

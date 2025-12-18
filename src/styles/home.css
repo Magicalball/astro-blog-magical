@@ -131,6 +131,9 @@
 
   .span-above {
     grid-row: 2;
+    overflow: visible;
+    min-height: auto;
+    height: auto;
   }
 
   .span-below {
@@ -159,6 +162,14 @@ div.span-left a {
 .above-a {
   display: flex;
   justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.date-time-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 300px;
 }
 
 .home-top-card {
@@ -193,5 +204,51 @@ div.span-left a {
     width: calc(100% - 40px) !important;
     max-width: none !important;
     box-sizing: border-box;
+  }
+
+  .span-above {
+    overflow: visible;
+    min-height: auto;
+    height: auto;
+  }
+
+  .above-a {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .date-time-wrapper {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .date-time-wrapper > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    box-sizing: border-box;
+  }
+
+  .date-time-wrapper > div > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .date-time-wrapper p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .popular-tags {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    height: auto;
+    min-height: auto;
   }
 }

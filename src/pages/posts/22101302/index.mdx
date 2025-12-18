@@ -5,57 +5,48 @@ pubDate: "2022-10-13"
 tags: ['学习']
 ---
 
-import Image from '../../../components/Pimage.tsx';
-
 原理：安卓平板上创建Linux环境，目前主流的是termux，不过AidLux操作更傻瓜化，本文基于AidLux
 
 笔者使用的是华为平板
 
 在应用商店下载AidLux ，
 
-<figure>
+![](/images/posts/22101302/image.webp)
 
-<Image src="/images/posts/22101302/image.png" width="700px" />
-
-<figcaption>
-
-下载AidLux
-
-</figcaption>
-
-</figure>
+*下载AidLux*
 
 一顿注册登录
 
-<Image src="/images/posts/22101302/image-1.png" width="700px" />  
+![](/images/posts/22101302/image-1.webp)  
 
 如果你是Android11或者更高版本，按提示，进入设置点击5下版本号，进入开发者选项，配置无线ADB调试，没有就跳过。
 
 点击“A”搜索下载安装code-server，这里看你网络情况，不好就多下载几次
 
-<Image src="/images/posts/22101302/image-2.png" width="700px" />
+![](/images/posts/22101302/image-2.webp)
 
 下载好后，点击打开，可以敲代码但是只能敲Python
 
-<Image src="/images/posts/22101302/image-3.png" width="700px" />
+![](/images/posts/22101302/image-3.webp)
 
 接下来添加C/C++支持
 
 进入终端 ，输入apt update
 
-<Image src="/images/posts/22101302/image-4.png" width="700px" />
+![](/images/posts/22101302/image-4.webp)
 
 一路更新，退出后，再次点击“A”， 选择 “Linux” “debian源”
 
-<Image src="/images/posts/22101302/image-5.png" width="700px" />
+![](/images/posts/22101302/image-5.webp)
 
 搜索build-essential 并安装
 
-<Image src="/images/posts/22101302/image-6.png" width="700px" />
-<Image src="/images/posts/22101302/image-7.png" width="700px" />
+![](/images/posts/22101302/image-6.webp)
+
+![](/images/posts/22101302/image-7.webp)
 
 安装成功后，重新打开code-server，随便新建个Hello.c，点击上面的第一个三角号就可以运行了
 
-<Image src="/images/posts/22101302/image-8.png" width="700px" />
+![](/images/posts/22101302/image-8.webp)
 
-<Image src="/images/posts/22101302/image-9.png" width="700px" />
+![](/images/posts/22101302/image-9.webp)

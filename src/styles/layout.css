@@ -2,6 +2,7 @@
   background-color: rgb(255, 255, 255);
   border-radius: 12px;
   padding: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .dark .block {

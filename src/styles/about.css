@@ -52,7 +52,6 @@
   border: 2px solid rgb(255, 255, 255);
 }
 
-/* Responsive layout for small screens without changing visual style */
 @media (max-width: 768px) {
   .mineinfo {
     grid-template-columns: 1fr;

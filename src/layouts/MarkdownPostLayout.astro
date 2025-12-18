@@ -164,6 +164,7 @@ const cover = resolveCoverImage(fm.coverImage);
 
   .post-content {
     text-align: left;
+    overflow-x: hidden; /* 防止图片等元素横向溢出 */
   }
 
   /* Markdown 正文排版（无动画，专注阅读） */
@@ -171,6 +172,8 @@ const cover = resolveCoverImage(fm.coverImage);
     font-size: 1rem;
     line-height: 1.75;
     color: #222222;
+    overflow-x: hidden; /* 确保 markdown 内容不会横向溢出 */
+    word-wrap: break-word;
   }
 
   :global(.dark) .markdown-body {
@@ -277,11 +280,17 @@ const cover = resolveCoverImage(fm.coverImage);
     color: #cccccc;
   }
 
-  .markdown-body img {
-    max-width: 100%;
+  /* 确保 Markdown 渲染的图片和组件图片都能正确应用样式 */
+  .markdown-body :global(img),
+  :global(.markdown-body img) {
+    max-width: 100% !important; /* 强制限制最大宽度，确保不超出容器 */
+    width: auto !important; /* 覆盖所有内联 width 设置，让宽度自适应 */
+    height: auto !important; /* 强制高度自适应，保持宽高比，防止裁剪 */
+    max-height: none !important; /* 移除任何高度限制，让图片按比例显示 */
     display: block;
     margin: 1.5rem auto;
     border-radius: 4px;
+    box-sizing: border-box;
   }
 
   .markdown-body hr {
