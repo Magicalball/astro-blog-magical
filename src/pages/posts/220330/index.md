@@ -2,7 +2,7 @@
 layout: ../../../layouts/MarkdownPostLayout.astro
 title: "墨笔年华"
 pubDate: "2022-03-30"
-author: 'Magicalball'
+author: 'USTIL'
 tags: ['文学']
 ---
 

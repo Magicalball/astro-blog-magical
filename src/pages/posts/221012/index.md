@@ -2,7 +2,7 @@
 layout: ../../../layouts/MarkdownPostLayout.astro
 title: "【算法学习】——链表"
 pubDate: "2022-10-12"
-author: 'Magicalball'
+author: 'USTIL'
 tags: ['学习']
 ---
 
